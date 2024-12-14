@@ -28,108 +28,279 @@ class BankingBehaviorModel:
         
         self.model_dir.mkdir(parents=True, exist_ok=True)
 
-    def _objective(self, trial, X_train, y_train, model_type):
-        """Optimization objective for Optuna"""
-        if model_type == 'rf':
-            params = {
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-                'max_depth': trial.suggest_int('max_depth', 3, 15),
-                'min_samples_split': trial.suggest_int('min_samples_split', 2, 10),
-                'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 5)
-            }
-            model = RandomForestClassifier(**params, random_state=42, n_jobs=-1)
+    def load_and_process_data(self):
+        """Load and process all banking data with behavioral features"""
+        print("Loading datasets...")
         
-        elif model_type == 'xgb':
-            params = {
-                'max_depth': trial.suggest_int('max_depth', 3, 15),
-                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3),
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-                'min_child_weight': trial.suggest_int('min_child_weight', 1, 7),
-                'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0)
-            }
-            model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
+        # Load all datasets
+        datasets = self._load_datasets()
         
-        elif model_type == 'lgb':
-            params = {
-                'num_leaves': trial.suggest_int('num_leaves', 20, 100),
-                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3),
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-                'min_child_samples': trial.suggest_int('min_child_samples', 5, 30),
-                'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0)
-            }
-            model = lgb.LGBMClassifier(**params, random_state=42, n_jobs=-1)
+        print("Creating behavioral features...")
+        features = {}
         
-        # Perform cross-validation
-        cv_scores = cross_val_score(
-            model, X_train, y_train, 
-            cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=42),
-            scoring='roc_auc'
+        # Create different types of features
+        account_features = self._create_account_features(datasets)
+        transaction_features = self._create_transaction_features(datasets)
+        merchant_features = self._create_merchant_features(datasets)
+        product_features = self._create_product_features(datasets)
+        
+        # Combine all features
+        features.update(account_features)
+        features.update(transaction_features)
+        features.update(merchant_features)
+        features.update(product_features)
+        
+        # Create final dataset
+        final_df = self._combine_features(
+            datasets['customers'], 
+            features, 
+            datasets['risk_metrics']
         )
         
-        return cv_scores.mean()
+        print(f"Final dataset shape: {final_df.shape}")
+        return final_df
 
-    def _create_and_train_model(self, model_type, params, X_train, y_train):
-        """Create and train a model with given parameters"""
-        if model_type == 'rf':
-            model = RandomForestClassifier(**params, random_state=42, n_jobs=-1)
-        elif model_type == 'xgb':
-            model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
-        elif model_type == 'lgb':
-            model = lgb.LGBMClassifier(**params, random_state=42, n_jobs=-1)
+    def _load_datasets(self):
+        """Load all required datasets"""
+        datasets = {}
+        required_files = [
+            'customers.csv', 'checking_accounts.csv', 'savings_accounts.csv',
+            'credit_cards.csv', 'loans.csv', 'checking_transactions.csv',
+            'savings_transactions.csv', 'credit_card_transactions.csv',
+            'loan_transactions.csv', 'merchants.csv', 'products.csv',
+            'branches.csv', 'risk_metrics.csv'
+        ]
         
-        model.fit(X_train, y_train)
-        return model
+        for file in required_files:
+            name = file.replace('.csv', '')
+            file_path = self.data_dir / file
+            try:
+                datasets[name] = pd.read_csv(file_path)
+                print(f"Loaded {file} with {len(datasets[name])} records")
+            except FileNotFoundError:
+                print(f"Warning: {file} not found in {self.data_dir}")
+                datasets[name] = pd.DataFrame()
+        
+        return datasets
 
-    def _evaluate_model(self, model, X_test, y_test):
-        """Evaluate model performance"""
-        y_pred = model.predict(X_test)
-        y_pred_proba = model.predict_proba(X_test)
+    def _create_account_features(self, datasets):
+        """Create account-related behavioral features"""
+        account_features = pd.DataFrame()
         
-        metrics = {
-            'accuracy': accuracy_score(y_test, y_pred),
-            'roc_auc': roc_auc_score(y_test, y_pred_proba, multi_class='ovr'),
-            'classification_report': classification_report(y_test, y_pred, output_dict=True)
+        # Process each account type
+        account_types = {
+            'checking': 'checking_accounts',
+            'savings': 'savings_accounts',
+            'credit': 'credit_cards',
+            'loan': 'loans'
         }
         
-        return metrics
+        for acc_type, file_name in account_types.items():
+            if file_name in datasets and not datasets[file_name].empty:
+                df = datasets[file_name]
+                
+                # Basic account metrics
+                metrics = df.groupby('customer_id').agg({
+                    'account_id': 'count',
+                    'current_balance': ['mean', 'sum', 'std']
+                })
+                
+                # Flatten column names
+                metrics.columns = [f'{acc_type}_{col[0]}_{col[1]}'.lower() 
+                                 if isinstance(col, tuple) 
+                                 else f'{acc_type}_{col}'.lower() 
+                                 for col in metrics.columns]
+                
+                # Add type-specific features
+                if acc_type == 'credit' and 'utilization_rate' in df.columns:
+                    metrics[f'{acc_type}_utilization_mean'] = \
+                        df.groupby('customer_id')['utilization_rate'].mean()
+                
+                if acc_type == 'loan' and 'original_amount' in df.columns:
+                    metrics[f'{acc_type}_total_original'] = \
+                        df.groupby('customer_id')['original_amount'].sum()
+                
+                # Update account features
+                if account_features.empty:
+                    account_features = metrics
+                else:
+                    account_features = account_features.join(metrics, how='outer')
+        
+        return account_features.fillna(0)
 
-    def _plot_model_comparison(self, viz_path):
-        """Plot model comparison results"""
-        metrics = ['accuracy', 'roc_auc']
-        scores = {model_type: [results['metrics'][m] for m in metrics] 
-                 for model_type, results in self.evaluation_results.items()}
+    def _create_transaction_features(self, datasets):
+        """Create transaction-related behavioral features"""
+        transaction_features = pd.DataFrame()
         
-        plt.figure(figsize=(10, 6))
-        x = np.arange(len(metrics))
-        width = 0.25
+        # Process each transaction type
+        transaction_types = {
+            'checking': ('checking_transactions', 'checking_accounts'),
+            'savings': ('savings_transactions', 'savings_accounts'),
+            'credit': ('credit_card_transactions', 'credit_cards'),
+            'loan': ('loan_transactions', 'loans')
+        }
         
-        for i, (model_type, scores) in enumerate(scores.items()):
-            plt.bar(x + i*width, scores, width, label=model_type.upper())
+        for tx_type, (tx_file, acc_file) in transaction_types.items():
+            if tx_file in datasets and acc_file in datasets and \
+               not datasets[tx_file].empty and not datasets[acc_file].empty:
+                
+                # Merge transactions with accounts to get customer_id
+                txn_df = datasets[tx_file].merge(
+                    datasets[acc_file][['account_id', 'customer_id']],
+                    on='account_id',
+                    how='left'
+                )
+                
+                # Calculate transaction metrics
+                metrics = txn_df.groupby('customer_id').agg({
+                    'amount': ['count', 'mean', 'sum', 'std'],
+                    'transaction_id': 'nunique'
+                })
+                
+                # Flatten column names
+                metrics.columns = [f'{tx_type}_tx_{col[0]}_{col[1]}'.lower() 
+                                 if isinstance(col, tuple) 
+                                 else f'{tx_type}_tx_{col}'.lower() 
+                                 for col in metrics.columns]
+                
+                # Update transaction features
+                if transaction_features.empty:
+                    transaction_features = metrics
+                else:
+                    transaction_features = transaction_features.join(metrics, how='outer')
         
-        plt.xlabel('Metrics')
-        plt.ylabel('Score')
-        plt.title('Model Performance Comparison')
-        plt.xticks(x + width, metrics)
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig(os.path.join(viz_path, 'model_comparison.png'))
-        plt.close()
+        return transaction_features.fillna(0)
 
-    def _plot_feature_importance(self, viz_path):
-        """Plot feature importance for the best model"""
-        if hasattr(self.best_model, 'feature_importances_'):
-            importance = self.best_model.feature_importances_
-            indices = np.argsort(importance)[::-1][:20]  # Top 20 features
+    def _create_merchant_features(self, datasets):
+        """Create merchant interaction behavioral features"""
+        merchant_features = pd.DataFrame()
+        
+        if 'merchants' in datasets and not datasets['merchants'].empty:
+            # Combine credit card and checking transactions
+            tx_data = []
             
-            plt.figure(figsize=(12, 8))
-            plt.title(f'Top 20 Feature Importances ({self.best_model_type.upper()})')
-            plt.bar(range(20), importance[indices])
-            plt.xticks(range(20), [self.feature_names[i] for i in indices], rotation=45, ha='right')
-            plt.tight_layout()
-            plt.savefig(os.path.join(viz_path, 'feature_importance.png'))
-            plt.close()
+            if 'credit_card_transactions' in datasets and not datasets['credit_card_transactions'].empty:
+                cc_tx = datasets['credit_card_transactions'].merge(
+                    datasets['credit_cards'][['account_id', 'customer_id']],
+                    on='account_id',
+                    how='left'
+                )
+                tx_data.append(cc_tx)
+            
+            if 'checking_transactions' in datasets and not datasets['checking_transactions'].empty:
+                check_tx = datasets['checking_transactions'].merge(
+                    datasets['checking_accounts'][['account_id', 'customer_id']],
+                    on='account_id',
+                    how='left'
+                )
+                tx_data.append(check_tx)
+            
+            if tx_data:
+                # Combine all transactions
+                all_tx = pd.concat(tx_data)
+                
+                # Merge with merchant data
+                tx_merchants = all_tx.merge(
+                    datasets['merchants'][['merchant_id', 'category']],
+                    on='merchant_id',
+                    how='left'
+                )
+                
+                # Calculate merchant metrics
+                merchant_features = tx_merchants.groupby('customer_id').agg({
+                    'merchant_id': 'nunique',
+                    'category': 'nunique',
+                    'amount': ['sum', 'mean', 'std']
+                })
+                
+                # Flatten column names
+                merchant_features.columns = [f'merchant_{col[0]}_{col[1]}'.lower() 
+                                          if isinstance(col, tuple) 
+                                          else f'merchant_{col}'.lower() 
+                                          for col in merchant_features.columns]
+        
+        return merchant_features.fillna(0)
+
+    def _create_product_features(self, datasets):
+        """Create product usage and relationship features"""
+        product_features = pd.DataFrame()
+        
+        # Combine all account types
+        account_dfs = []
+        account_types = {
+            'checking': 'checking_accounts',
+            'savings': 'savings_accounts',
+            'credit': 'credit_cards',
+            'loan': 'loans'
+        }
+        
+        for acc_type, file_name in account_types.items():
+            if file_name in datasets and not datasets[file_name].empty:
+                df = datasets[file_name][['customer_id', 'account_id']].copy()
+                df['product_type'] = acc_type
+                account_dfs.append(df)
+        
+        if account_dfs:
+            all_accounts = pd.concat(account_dfs)
+            
+            # Calculate product metrics
+            product_features = all_accounts.groupby('customer_id').agg({
+                'product_type': 'nunique',
+                'account_id': 'count'
+            }).rename(columns={
+                'product_type': 'product_diversity',
+                'account_id': 'total_accounts'
+            })
+        
+        return product_features.fillna(0)
+
+    def _combine_features(self, customers_df, features_dict, risk_metrics_df):
+        """Combine all features into final dataset"""
+        final_df = customers_df.copy()
+        
+        # Add all feature groups
+        for feature_df in features_dict.values():
+            if not feature_df.empty:
+                final_df = final_df.merge(feature_df, 
+                                        on='customer_id', 
+                                        how='left')
+        
+        # Add risk metrics
+        if not risk_metrics_df.empty:
+            final_df = final_df.merge(risk_metrics_df,
+                                    on='customer_id',
+                                    how='left')
+        
+        return final_df.fillna(0)
+
+    
+    def prepare_features(self, df):
+        """Prepare features for modeling"""
+        print("Preparing features for modeling...")
+        # Define target variable
+        y = df['risk_category']
+        
+        # Drop unnecessary columns
+        drop_cols = ['customer_id', 'ssn', 'email', 'phone_number', 'birth_date',
+                    'onboarding_date', 'risk_category', 'calculation_date',
+                    'first_name', 'last_name', 'address_street', 'address_city']
+        X = df.drop(columns=[col for col in drop_cols if col in df.columns])
+        
+        # Handle categorical variables
+        cat_columns = X.select_dtypes(include=['object']).columns
+        for col in cat_columns:
+            le = LabelEncoder()
+            X[col] = le.fit_transform(X[col].astype(str))
+            self.label_encoders[col] = le
+        
+        # Scale features
+        X = pd.DataFrame(
+            self.scaler.fit_transform(X),
+            columns=X.columns
+        )
+        
+        return X, y
+
 
 def main():
     # Initialize model
