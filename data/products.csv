@@ -1,0 +1,13 @@
+product_id,product_name,product_type,monthly_fee,min_balance,interest_rate,annual_fee,apr,rewards_rate,min_amount,max_amount,base_rate
+CHK_BASIC,Basic Checking,CHECKING,0.0,0.0,0.0,,,,,,
+CHK_PLUS,Premium Checking,CHECKING,12.0,1500.0,0.01,,,,,,
+CHK_PREMIER,Premier Checking,CHECKING,25.0,5000.0,0.02,,,,,,
+SAV_BASIC,Basic Savings,SAVINGS,0.0,300.0,0.02,,,,,,
+SAV_PLUS,Premium Savings,SAVINGS,5.0,2500.0,0.03,,,,,,
+SAV_MONEY_MARKET,Money Market,SAVINGS,10.0,10000.0,0.04,,,,,,
+CC_BASIC,Basic Credit Card,CREDIT_CARD,,,,0.0,0.1499,0.01,,,
+CC_REWARDS,Rewards Credit Card,CREDIT_CARD,,,,95.0,0.1699,0.015,,,
+CC_PREMIUM,Premium Credit Card,CREDIT_CARD,,,,495.0,0.1899,0.025,,,
+LOAN_AUTO,Auto Loan,LOAN,,,,,,,5000.0,50000.0,0.0399
+LOAN_PERSONAL,Personal Loan,LOAN,,,,,,,1000.0,25000.0,0.0699
+LOAN_HOME,Home Loan,LOAN,,,,,,,100000.0,1000000.0,0.0299

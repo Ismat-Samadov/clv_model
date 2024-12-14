@@ -131,6 +131,10 @@ class EnterpriseBankingDataGenerator:
             birth_date = self.start_date - timedelta(days=np.random.randint(365*18, 365*80))
             onboarding_date = self.start_date - timedelta(days=np.random.randint(0, 365*10))
             
+            # Fix the clip operations for single values
+            credit_score = min(850, max(300, np.random.normal(700, 80)))
+            income = min(300000, max(20000, np.random.lognormal(11, 0.5)))
+            
             customers.append({
                 'customer_id': cust_id,
                 'ssn': f"{np.random.randint(100, 999)}-{np.random.randint(10, 99)}-{np.random.randint(1000, 9999)}",
@@ -145,15 +149,16 @@ class EnterpriseBankingDataGenerator:
                 'address_zip': np.random.randint(10000, 99999),
                 'onboarding_date': onboarding_date,
                 'onboarding_branch_id': np.random.choice(self.branch_data['branch_id']),
-                'credit_score': np.random.normal(700, 80).clip(300, 850),
-                'income': np.random.lognormal(11, 0.5).clip(20000, 300000),
+                'credit_score': credit_score,
+                'income': income,
                 'occupation': np.random.choice(['Professional', 'Service', 'Technical', 'Student', 'Retired']),
                 'employer': f"Employer_{np.random.randint(1, 100)}",
                 'customer_segment': np.random.choice(['MASS', 'AFFLUENT', 'PRIVATE', 'BUSINESS'], p=[0.7, 0.2, 0.05, 0.05])
             })
         
         return pd.DataFrame(customers)
-
+    
+    
     def generate_accounts(self, customers: pd.DataFrame) -> Dict[str, pd.DataFrame]:
         """Generate different types of account information"""
         print("Generating account data...")
