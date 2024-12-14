@@ -422,7 +422,7 @@ class EnterpriseBankingDataGenerator:
 if __name__ == "__main__":
     generator = EnterpriseBankingDataGenerator(
         start_date="2023-01-01",
-        num_customers=1000,
+        num_customers=100,
         num_months=24
     )
     
