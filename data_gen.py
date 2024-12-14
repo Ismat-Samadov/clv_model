@@ -423,7 +423,7 @@ if __name__ == "__main__":
     generator = EnterpriseBankingDataGenerator(
         start_date="2023-01-01",
         num_customers=100,
-        num_months=24
+        num_months=12
     )
     
     datasets = generator.generate_all()
