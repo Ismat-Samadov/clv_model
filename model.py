@@ -3,9 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, accuracy_score
 import xgboost as xgb
-import lightgbm as lgb
 import optuna
 import joblib
 import json
@@ -38,13 +38,21 @@ class BankingBehaviorModel:
         datasets = self._load_datasets()
         
         print("Creating behavioral features...")
-        features = {
-            'account': self._create_account_features(datasets),
-            'transaction': self._create_transaction_features(datasets),
-            'merchant': self._create_merchant_features(datasets),
-            'product': self._create_product_features(datasets)
-        }
+        features = {}
         
+        # Create different types of features
+        account_features = self._create_account_features(datasets)
+        transaction_features = self._create_transaction_features(datasets)
+        merchant_features = self._create_merchant_features(datasets)
+        product_features = self._create_product_features(datasets)
+        
+        # Combine all features
+        features.update({'account': account_features})
+        features.update({'transaction': transaction_features})
+        features.update({'merchant': merchant_features})
+        features.update({'product': product_features})
+        
+        # Create final dataset
         final_df = self._combine_features(
             datasets['customers'], 
             features, 
@@ -130,17 +138,20 @@ class BankingBehaviorModel:
             if tx_file in datasets and acc_file in datasets and \
                not datasets[tx_file].empty and not datasets[acc_file].empty:
                 
+                # Merge transactions with accounts to get customer_id
                 txn_df = datasets[tx_file].merge(
                     datasets[acc_file][['account_id', 'customer_id']],
                     on='account_id',
                     how='left'
                 )
                 
+                # Calculate transaction metrics
                 metrics = txn_df.groupby('customer_id').agg({
                     'amount': ['count', 'mean', 'sum', 'std'],
                     'transaction_id': 'nunique'
                 })
                 
+                # Flatten column names
                 metrics.columns = [f'{tx_type}_tx_{col[0]}_{col[1]}'.lower() 
                                  if isinstance(col, tuple) 
                                  else f'{tx_type}_tx_{col}'.lower() 
@@ -160,6 +171,7 @@ class BankingBehaviorModel:
         if 'merchants' in datasets and not datasets['merchants'].empty:
             tx_data = []
             
+            # Process credit card transactions
             if 'credit_card_transactions' in datasets and not datasets['credit_card_transactions'].empty:
                 cc_tx = datasets['credit_card_transactions'].merge(
                     datasets['credit_cards'][['account_id', 'customer_id']],
@@ -168,6 +180,7 @@ class BankingBehaviorModel:
                 )
                 tx_data.append(cc_tx)
             
+            # Process checking transactions
             if 'checking_transactions' in datasets and not datasets['checking_transactions'].empty:
                 check_tx = datasets['checking_transactions'].merge(
                     datasets['checking_accounts'][['account_id', 'customer_id']],
@@ -177,13 +190,17 @@ class BankingBehaviorModel:
                 tx_data.append(check_tx)
             
             if tx_data:
+                # Combine all transactions
                 all_tx = pd.concat(tx_data)
+                
+                # Merge with merchant data
                 tx_merchants = all_tx.merge(
                     datasets['merchants'][['merchant_id', 'category']],
                     on='merchant_id',
                     how='left'
                 )
                 
+                # Calculate merchant metrics
                 merchant_features = tx_merchants.groupby('customer_id').agg({
                     'merchant_id': 'nunique',
                     'category': 'nunique',
@@ -231,12 +248,14 @@ class BankingBehaviorModel:
         """Combine all features into final dataset"""
         final_df = customers_df.copy()
         
+        # Add features
         for feature_df in features_dict.values():
             if not feature_df.empty:
                 final_df = final_df.merge(feature_df, 
                                         on='customer_id', 
                                         how='left')
         
+        # Add risk metrics
         if not risk_metrics_df.empty:
             final_df = final_df.merge(risk_metrics_df,
                                     on='customer_id',
@@ -247,58 +266,29 @@ class BankingBehaviorModel:
     def prepare_features(self, df):
         """Prepare features for modeling"""
         print("Preparing features for modeling...")
+        # Create target variable
         y = df['risk_category']
         
+        # Drop unnecessary columns
         drop_cols = ['customer_id', 'ssn', 'email', 'phone_number', 'birth_date',
                     'onboarding_date', 'risk_category', 'calculation_date',
                     'first_name', 'last_name', 'address_street', 'address_city']
         X = df.drop(columns=[col for col in drop_cols if col in df.columns])
         
+        # Handle categorical variables
         cat_columns = X.select_dtypes(include=['object']).columns
         for col in cat_columns:
             le = LabelEncoder()
             X[col] = le.fit_transform(X[col].astype(str))
             self.label_encoders[col] = le
         
+        # Scale features
         X = pd.DataFrame(
             self.scaler.fit_transform(X),
             columns=X.columns
         )
         
         return X, y
-
-    def train_and_evaluate_models(self, X, y, n_trials=50):
-        """Train and evaluate models with hyperparameter optimization"""
-        print("Training and evaluating models...")
-        best_overall_score = 0
-        
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42, stratify=y
-        )
-        
-        for model_type in ['rf', 'xgb', 'lgb']:
-            print(f"\nOptimizing {model_type.upper()} model...")
-            
-            study = optuna.create_study(direction='maximize')
-            study.optimize(
-                lambda trial: self._objective(trial, X_train, y_train, model_type),
-                n_trials=n_trials
-            )
-            
-            model = self._create_and_train_model(model_type, study.best_params, X_train, y_train)
-            self.models[model_type] = model
-            
-            metrics = self._evaluate_model(model, X_test, y_test)
-            self.evaluation_results[model_type] = {
-                'metrics': metrics,
-                'parameters': study.best_params,
-                'best_cv_score': study.best_value
-            }
-            
-            if metrics['roc_auc'] > best_overall_score:
-                best_overall_score = metrics['roc_auc']
-                self.best_model = model
-                self.best_model_type = model_type
 
     def _objective(self, trial, X_train, y_train, model_type):
         """Optimization objective for Optuna"""
@@ -313,56 +303,77 @@ class BankingBehaviorModel:
         
         elif model_type == 'xgb':
             params = {
-                'max_depth': trial.suggest_int('max_depth', 3, 15),
-                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3),
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
+                'max_depth': trial.suggest_int('max_depth', 3, 10),
+                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.1),
+                'n_estimators': trial.suggest_int('n_estimators', 50, 300),
                 'min_child_weight': trial.suggest_int('min_child_weight', 1, 7),
                 'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0)
+                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0),
+                'gamma': trial.suggest_float('gamma', 0, 5)
             }
             model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
         
-        elif model_type == 'lgb':
+        elif model_type == 'logistic':
             params = {
-                'num_leaves': trial.suggest_int('num_leaves', 20, 100),
-                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3),
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-                'min_child_samples': trial.suggest_int('min_child_samples', 5, 30),
-                'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0)
+                'C': trial.suggest_float('C', 0.001, 10.0, log=True),
+                'max_iter': trial.suggest_int('max_iter', 100, 500),
+                'solver': trial.suggest_categorical('solver', ['lbfgs', 'saga']),
+                # Use a categorical choice that includes None
+                'penalty': trial.suggest_categorical('penalty', ['l2', None])
             }
-            model = lgb.LGBMClassifier(**params, random_state=42, n_jobs=-1)
+            model = LogisticRegression(**params, random_state=42, multi_class='ovr')
         
+        # Use accuracy for model evaluation
         cv_scores = cross_val_score(
             model, X_train, y_train, 
             cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=42),
-            scoring='roc_auc'
+            scoring='accuracy'
         )
         
         return cv_scores.mean()
 
     def _create_and_train_model(self, model_type, params, X_train, y_train):
-        """Create and train a model with given parameters"""
+        """Create and train model with given parameters"""
         if model_type == 'rf':
             model = RandomForestClassifier(**params, random_state=42, n_jobs=-1)
+            model.fit(X_train, y_train)
+            
         elif model_type == 'xgb':
             model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
-        elif model_type == 'lgb':
-            model = lgb.LGBMClassifier(**params, random_state=42, n_jobs=-1)
+            # Split data for early stopping
+            X_train_split, X_val_split, y_train_split, y_val_split = train_test_split(
+                X_train, y_train, test_size=0.2, random_state=42, stratify=y_train
+            )
+            model.fit(
+                X_train_split, y_train_split,
+                eval_set=[(X_val_split, y_val_split)],
+                early_stopping_rounds=10,
+                verbose=False
+            )
+            
+        elif model_type == 'logistic':
+            params = params.copy()  # Create a copy to avoid modifying original
+            # Ensure proper handling of None value for penalty
+            if params['penalty'] == 'none':
+                params['penalty'] = None
+                
+            model = LogisticRegression(**params, random_state=42, multi_class='ovr')
+            model.fit(X_train, y_train)
         
-        model.fit(X_train, y_train)
         return model
+
 
     def _evaluate_model(self, model, X_test, y_test):
         """Evaluate model performance"""
         y_pred = model.predict(X_test)
         y_pred_proba = model.predict_proba(X_test)
         
-        try:
-            roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr')
-        except ValueError:
-            # Fallback to binary classification if only two classes
+        # Calculate ROC AUC score appropriately based on number of classes
+        n_classes = len(np.unique(y_test))
+        if n_classes == 2:
             roc_auc = roc_auc_score(y_test, y_pred_proba[:, 1])
+        else:
+            roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr')
         
         metrics = {
             'accuracy': accuracy_score(y_test, y_pred),
@@ -373,19 +384,68 @@ class BankingBehaviorModel:
         
         return metrics
 
+    def train_and_evaluate_models(self, X, y, n_trials=30):
+        """Train and evaluate models"""
+        print("Training and evaluating models...")
+        self.evaluation_results = {}
+        best_overall_score = 0
+        
+        # Split data
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42, stratify=y
+        )
+        
+        # Train each model type
+        for model_type in ['rf', 'xgb', 'logistic']:
+            print(f"\nOptimizing {model_type.upper()} model...")
+            try:
+                # Optimize hyperparameters
+                study = optuna.create_study(direction='maximize')
+                study.optimize(
+                    lambda trial: self._objective(trial, X_train, y_train, model_type),
+                    n_trials=n_trials,
+                    catch=(ValueError,)
+                )
+                
+                # Train final model with best parameters
+                model = self._create_and_train_model(model_type, study.best_params, X_train, y_train)
+                self.models[model_type] = model
+                
+                # Evaluate model
+                metrics = self._evaluate_model(model, X_test, y_test)
+                self.evaluation_results[model_type] = {
+                    'metrics': metrics,
+                    'parameters': study.best_params,
+                    'best_cv_score': study.best_value
+                }
+                
+                # Update best model if current one is better
+                if metrics['accuracy'] > best_overall_score:
+                    best_overall_score = metrics['accuracy']
+                    self.best_model = model
+                    self.best_model_type = model_type
+                
+                print(f"{model_type.upper()} Model Results:")
+                print(f"Accuracy: {metrics['accuracy']:.4f}")
+                print(f"ROC AUC: {metrics['roc_auc']:.4f}")
+                
+            except Exception as e:
+                print(f"Error training {model_type.upper()} model: {str(e)}")
+                continue
+
     def save_model_artifacts(self):
         """Save model artifacts and visualizations"""
         if not self.best_model:
             print("No model to save. Please train models first.")
             return
-            
+        
         # Create directories if they don't exist
         model_path = self.model_dir / 'models'
         viz_path = self.model_dir / 'visualizations'
         model_path.mkdir(exist_ok=True)
         viz_path.mkdir(exist_ok=True)
         
-        # Save best model and preprocessors
+        # Save model and preprocessors
         joblib.dump(self.best_model, model_path / 'best_model.joblib')
         joblib.dump(self.scaler, model_path / 'scaler.joblib')
         joblib.dump(self.label_encoders, model_path / 'label_encoders.joblib')
@@ -394,9 +454,8 @@ class BankingBehaviorModel:
         with open(model_path / 'feature_names.json', 'w') as f:
             json.dump(list(self.feature_names), f)
         
-        # Save model evaluation results
+        # Save evaluation results
         with open(model_path / 'evaluation_results.json', 'w') as f:
-            # Convert numpy types to native Python types for JSON serialization
             results = {}
             for model_type, result in self.evaluation_results.items():
                 results[model_type] = {
@@ -414,7 +473,7 @@ class BankingBehaviorModel:
                 }
             json.dump(results, f, indent=2)
         
-        # Generate and save visualizations
+        # Generate visualizations
         self._plot_model_comparison(viz_path)
         self._plot_feature_importance(viz_path)
         self._plot_confusion_matrices(viz_path)
@@ -445,20 +504,31 @@ class BankingBehaviorModel:
 
     def _plot_feature_importance(self, viz_path):
         """Plot feature importance for the best model"""
-        if not hasattr(self.best_model, 'feature_importances_'):
-            return
+        if hasattr(self.best_model, 'feature_importances_'):
+            importance = self.best_model.feature_importances_
+            indices = np.argsort(importance)[::-1][:20]  # Top 20 features
             
-        importance = self.best_model.feature_importances_
-        indices = np.argsort(importance)[::-1][:20]  # Top 20 features
-        
-        plt.figure(figsize=(12, 8))
-        plt.title(f'Top 20 Feature Importances ({self.best_model_type.upper()})')
-        plt.bar(range(20), importance[indices])
-        plt.xticks(range(20), [self.feature_names[i] for i in indices], 
-                  rotation=45, ha='right')
-        plt.tight_layout()
-        plt.savefig(viz_path / 'feature_importance.png')
-        plt.close()
+            plt.figure(figsize=(12, 8))
+            plt.title(f'Top 20 Feature Importances ({self.best_model_type.upper()})')
+            plt.bar(range(20), importance[indices])
+            plt.xticks(range(20), [self.feature_names[i] for i in indices], 
+                      rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig(viz_path / 'feature_importance.png')
+            plt.close()
+        elif hasattr(self.best_model, 'coef_'):
+            # For logistic regression
+            importance = np.abs(self.best_model.coef_).mean(axis=0)
+            indices = np.argsort(importance)[::-1][:20]
+            
+            plt.figure(figsize=(12, 8))
+            plt.title(f'Top 20 Feature Coefficients ({self.best_model_type.upper()})')
+            plt.bar(range(20), importance[indices])
+            plt.xticks(range(20), [self.feature_names[i] for i in indices], 
+                      rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig(viz_path / 'feature_importance.png')
+            plt.close()
 
     def _plot_confusion_matrices(self, viz_path):
         """Plot confusion matrices for all models"""
