@@ -3,67 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking CLV Prediction</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <title>Banking CLV Calculator</title>
+    <style>
+        /* Modern CSS Reset and Base Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-700: #374151;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.25rem;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 1px;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button.danger {
+            background-color: var(--danger);
+        }
+
+        .item-container {
+            border: 1px solid var(--gray-200);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .error {
+            background-color: #fee2e2;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .results {
+            display: none;
+            background-color: #ecfdf5;
+            border: 1px solid var(--success);
+            padding: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 p-8">
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-2xl font-bold mb-6">Banking CLV Prediction Tool</h1>
-        
-        <div class="grid grid-cols-1 gap-6">
-            <!-- Customer Information -->
-            <div class="border p-4 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Customer Information</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Customer ID</label>
-                        <input type="number" id="customer_id" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Age</label>
-                        <input type="number" id="age" value="35" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Income</label>
-                        <input type="number" id="income" value="75000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Credit Score</label>
-                        <input type="number" id="credit_score" value="720" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tenure (months)</label>
-                        <input type="number" id="tenure_months" value="24" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Region</label>
-                        <select id="region" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                            <option value="North">North</option>
-                            <option value="South">South</option>
-                            <option value="East">East</option>
-                            <option value="West">West</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Acquisition Channel</label>
-                        <select id="acquisition_channel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
-                            <option value="Online">Online</option>
-                            <option value="Branch">Branch</option>
-                            <option value="Referral">Referral</option>
-                            <option value="Marketing">Marketing</option>
-                        </select>
-                    </div>
+<body>
+    <div class="container">
+        <h1 style="margin-bottom: 2rem;">Banking CLV Calculator</h1>
+
+        <!-- Customer Information -->
+        <div class="section">
+            <h2>Customer Information</h2>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="customer_id">Customer ID</label>
+                    <input type="number" id="customer_id" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" value="35">
+                </div>
+                <div class="form-group">
+                    <label for="income">Income</label>
+                    <input type="number" id="income" value="75000">
+                </div>
+                <div class="form-group">
+                    <label for="credit_score">Credit Score</label>
+                    <input type="number" id="credit_score" value="720">
+                </div>
+                <div class="form-group">
+                    <label for="tenure_months">Tenure (months)</label>
+                    <input type="number" id="tenure_months" value="24">
+                </div>
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select id="region">
+                        <option value="North">North</option>
+                        <option value="South">South</option>
+                        <option value="East">East</option>
+                        <option value="West">West</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="acquisition_channel">Acquisition Channel</label>
+                    <select id="acquisition_channel">
+                        <option value="Online">Online</option>
+                        <option value="Branch">Branch</option>
+                        <option value="Referral">Referral</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
                 </div>
             </div>
+        </div>
 
-            <!-- Product Information -->
-            <div class="border p-4 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Product Information</h2>
-                <div id="products">
-                    <div class="grid grid-cols-4 gap-4 mb-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Product Type</label>
-                            <select class="product-type mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+        <!-- Products -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Products</h2>
+                <button onclick="addProduct()">Add Product</button>
+            </div>
+            <div id="products"></div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Transactions</h2>
+                <button onclick="addTransaction()">Add Transaction</button>
+            </div>
+            <div id="transactions"></div>
+        </div>
+
+        <div class="error" id="error"></div>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            Calculating CLV...
+        </div>
+        <div class="results" id="results">
+            <h3>Prediction Results</h3>
+            <p><strong>Predicted CLV:</strong> <span id="predicted-clv"></span></p>
+            <p><strong>Confidence Score:</strong> <span id="confidence-score"></span></p>
+            <p><strong>Prediction Time:</strong> <span id="prediction-time"></span></p>
+        </div>
+
+        <button onclick="predictCLV()" style="width: 100%;" id="submit-btn">Calculate CLV</button>
+    </div>
+
+    <script>
+        // Constants for initial values
+        const INITIAL_PRODUCT = {
+            product_type: 'Savings',
+            start_date: '2023-01-01',
+            balance: 5000,
+            status: 'Active'
+        };
+
+        const INITIAL_TRANSACTION = {
+            transaction_date: '2024-01-01T10:00',
+            transaction_type: 'Deposit',
+            amount: 1000,
+            channel: 'Online'
+        };
+
+        // Product and Transaction templates
+        function createProductHTML(index) {
+            return `
+                <div class="item-container" id="product-${index}">
+                    <div class="grid">
+                        <div class="form-group">
+                            <label>Product Type</label>
+                            <select class="product-type">
                                 <option value="Savings">Savings</option>
                                 <option value="Checking">Checking</option>
                                 <option value="Credit Card">Credit Card</option>
@@ -72,38 +277,39 @@
                                 <option value="Personal Loan">Personal Loan</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Start Date</label>
-                            <input type="date" class="product-date mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" value="2023-01-01">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" class="product-date" value="${INITIAL_PRODUCT.start_date}">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Balance</label>
-                            <input type="number" class="product-balance mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" value="5000">
+                        <div class="form-group">
+                            <label>Balance</label>
+                            <input type="number" class="product-balance" value="${INITIAL_PRODUCT.balance}">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Status</label>
-                            <select class="product-status mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="product-status">
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
                                 <option value="Suspended">Suspended</option>
                             </select>
                         </div>
                     </div>
+                    ${index > 0 ? `<button class="danger" onclick="removeProduct(${index})">Remove</button>` : ''}
                 </div>
-            </div>
+            `;
+        }
 
-            <!-- Transaction Information -->
-            <div class="border p-4 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Transaction Information</h2>
-                <div id="transactions">
-                    <div class="grid grid-cols-4 gap-4 mb-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Date</label>
-                            <input type="datetime-local" class="transaction-date mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" value="2024-01-01T10:00">
+        function createTransactionHTML(index) {
+            return `
+                <div class="item-container" id="transaction-${index}">
+                    <div class="grid">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="datetime-local" class="transaction-date" value="${INITIAL_TRANSACTION.transaction_date}">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Type</label>
-                            <select class="transaction-type mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="transaction-type">
                                 <option value="Deposit">Deposit</option>
                                 <option value="Withdrawal">Withdrawal</option>
                                 <option value="Transfer">Transfer</option>
@@ -111,13 +317,13 @@
                                 <option value="Fee">Fee</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Amount</label>
-                            <input type="number" class="transaction-amount mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" value="1000">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" class="transaction-amount" value="${INITIAL_TRANSACTION.amount}">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Channel</label>
-                            <select class="transaction-channel mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                        <div class="form-group">
+                            <label>Channel</label>
+                            <select class="transaction-channel">
                                 <option value="Online">Online</option>
                                 <option value="Mobile">Mobile</option>
                                 <option value="Branch">Branch</option>
@@ -125,42 +331,66 @@
                             </select>
                         </div>
                     </div>
+                    ${index > 0 ? `<button class="danger" onclick="removeTransaction(${index})">Remove</button>` : ''}
                 </div>
-            </div>
+            `;
+        }
 
-            <div class="flex justify-between">
-                <button onclick="predictCLV()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    Predict CLV
-                </button>
-            </div>
+        // Add initial product and transaction
+        document.getElementById('products').innerHTML = createProductHTML(0);
+        document.getElementById('transactions').innerHTML = createTransactionHTML(0);
 
-            <!-- Results Section -->
-            <div id="results" class="hidden border p-4 rounded-lg bg-gray-50">
-                <h2 class="text-lg font-semibold mb-4">Prediction Results</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <span class="font-medium">Predicted CLV:</span>
-                        <span id="predicted-clv" class="ml-2"></span>
-                    </div>
-                    <div>
-                        <span class="font-medium">Confidence Score:</span>
-                        <span id="confidence-score" class="ml-2"></span>
-                    </div>
-                    <div>
-                        <span class="font-medium">Prediction Time:</span>
-                        <span id="prediction-time" class="ml-2"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+        let productCount = 1;
+        let transactionCount = 1;
+
+        function addProduct() {
+            const productsDiv = document.getElementById('products');
+            productsDiv.insertAdjacentHTML('beforeend', createProductHTML(productCount++));
+        }
+
+        function addTransaction() {
+            const transactionsDiv = document.getElementById('transactions');
+            transactionsDiv.insertAdjacentHTML('beforeend', createTransactionHTML(transactionCount++));
+        }
+
+        function removeProduct(index) {
+            document.getElementById(`product-${index}`).remove();
+        }
+
+        function removeTransaction(index) {
+            document.getElementById(`transaction-${index}`).remove();
+        }
+
         async function predictCLV() {
+            const submitBtn = document.getElementById('submit-btn');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const resultsDiv = document.getElementById('results');
+
+            // Reset state
+            errorDiv.style.display = 'none';
+            resultsDiv.style.display = 'none';
+            loadingDiv.style.display = 'block';
+            submitBtn.disabled = true;
+
             try {
-                // Log the form values for debugging
-                console.log('Collecting form data...');
-                
-                // Build the payload with all form values
+                // Validate required fields
+                const requiredFields = {
+                    'customer_id': 'Customer ID',
+                    'age': 'Age',
+                    'income': 'Income',
+                    'credit_score': 'Credit Score',
+                    'tenure_months': 'Tenure Months'
+                };
+
+                for (const [field, label] of Object.entries(requiredFields)) {
+                    const value = document.getElementById(field).value;
+                    if (!value) {
+                        throw new Error(`${label} is required`);
+                    }
+                }
+
+                // Collect form data
                 const payload = {
                     customer_id: parseInt(document.getElementById('customer_id').value),
                     age: parseInt(document.getElementById('age').value),
@@ -169,63 +399,102 @@
                     tenure_months: parseInt(document.getElementById('tenure_months').value),
                     region: document.getElementById('region').value,
                     acquisition_channel: document.getElementById('acquisition_channel').value,
-                    products: Array.from(document.querySelectorAll('#products > div')).map(div => {
-                        const data = {
-                            product_type: div.querySelector('.product-type').value,
-                            start_date: div.querySelector('.product-date').value + 'T00:00:00',
-                            balance: parseFloat(div.querySelector('.product-balance').value),
-                            status: div.querySelector('.product-status').value
-                        };
-                        console.log('Product data:', data);
-                        return data;
-                    }),
-                    transactions: Array.from(document.querySelectorAll('#transactions > div')).map(div => {
-                        const data = {
-                            transaction_date: div.querySelector('.transaction-date').value + ':00',
-                            transaction_type: div.querySelector('.transaction-type').value,
-                            amount: parseFloat(div.querySelector('.transaction-amount').value),
-                            channel: div.querySelector('.transaction-channel').value
-                        };
-                        console.log('Transaction data:', data);
-                        return data;
-                    })
+                    products: Array.from(document.querySelectorAll('#products .item-container')).map(div => ({
+                        product_type: div.querySelector('.product-type').value,
+                        start_date: div.querySelector('.product-date').value + 'T00:00:00',
+                        balance: parseFloat(div.querySelector('.product-balance').value),
+                        status: div.querySelector('.product-status').value
+                    })),
+                    transactions: Array.from(document.querySelectorAll('#transactions .item-container')).map(div => ({
+                        transaction_date: div.querySelector('.transaction-date').value + ':00',
+                        transaction_type: div.querySelector('.transaction-type').value,
+                        amount: parseFloat(div.querySelector('.transaction-amount').value),
+                        channel: div.querySelector('.transaction-channel').value
+                    }))
                 };
-    
+
+                // Basic validation
+                if (payload.age < 18 || payload.age > 120) {
+                    throw new Error('Age must be between 18 and 120');
+                }
+                if (payload.credit_score < 300 || payload.credit_score > 850) {
+                    throw new Error('Credit score must be between 300 and 850');
+                }
+                if (payload.income <= 0) {
+                    throw new Error('Income must be greater than 0');
+                }
+                if (payload.tenure_months < 0) {
+                    throw new Error('Tenure months cannot be negative');
+                }
+
                 console.log('Sending payload:', payload);
-    
+
                 const response = await fetch('/predict/clv', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-    
+
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(`API Error: ${JSON.stringify(errorData)}`);
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Failed to predict CLV');
                 }
-    
+
                 const result = await response.json();
                 console.log('Received result:', result);
-                
+
                 // Display results
-                document.getElementById('results').classList.remove('hidden');
                 document.getElementById('predicted-clv').textContent = 
-                    `$${result.predicted_clv.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                    `$${result.predicted_clv.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })}`;
                 document.getElementById('confidence-score').textContent = 
                     `${(result.confidence_score * 100).toFixed(1)}%`;
                 document.getElementById('prediction-time').textContent = 
                     new Date(result.prediction_timestamp).toLocaleString();
-    
+                resultsDiv.style.display = 'block';
+
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error making prediction: ' + error.message);
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            } finally {
+                loadingDiv.style.display = 'none';
+                submitBtn.disabled = false;
             }
         }
-    
-        // Add event listeners for form changes
+
+        // Form validation helpers
+        function validateNumber(input, min, max) {
+            const value = parseFloat(input.value);
+            if (isNaN(value) || value < min || value > max) {
+                input.setCustomValidity(`Value must be between ${min} and ${max}`);
+                return false;
+            }
+            input.setCustomValidity('');
+            return true;
+        }
+
+        // Add event listeners for real-time validation
         document.addEventListener('DOMContentLoaded', function() {
+            // Validate age
+            const ageInput = document.getElementById('age');
+            ageInput.addEventListener('input', () => validateNumber(ageInput, 18, 120));
+
+            // Validate credit score
+            const creditScoreInput = document.getElementById('credit_score');
+            creditScoreInput.addEventListener('input', () => validateNumber(creditScoreInput, 300, 850));
+
+            // Validate income
+            const incomeInput = document.getElementById('income');
+            incomeInput.addEventListener('input', () => validateNumber(incomeInput, 0, 1000000000));
+
+            // Validate tenure months
+            const tenureInput = document.getElementById('tenure_months');
+            tenureInput.addEventListener('input', () => validateNumber(tenureInput, 0, 600));
+
+            // Log form changes for debugging
             const inputs = document.querySelectorAll('input, select');
             inputs.forEach(input => {
                 input.addEventListener('change', function() {
@@ -233,6 +502,10 @@
                 });
             });
         });
+
+        // Initialize with one product and one transaction
+        addProduct();
+        addTransaction();
     </script>
 </body>
 </html>
