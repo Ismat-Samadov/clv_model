@@ -1,577 +1,287 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, accuracy_score
-import xgboost as xgb
-import optuna
+from sklearn.ensemble import GradientBoostingRegressor
 import joblib
-import json
 import os
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
 from datetime import datetime
 
-class BankingBehaviorModel:
-    def __init__(self, data_dir="data", model_dir="trained_models"):
-        """Initialize the Banking Behavior Model"""
-        self.data_dir = Path(data_dir)
-        self.model_dir = Path(model_dir)
-        self.models = {}
+
+class BankingCLVModel:
+    def __init__(self, model_dir='models'):
+        self.model_dir = model_dir
+        self.model = None
         self.scaler = StandardScaler()
         self.label_encoders = {}
-        self.feature_names = None
-        self.best_model = None
-        self.best_model_type = None
-        self.evaluation_results = {}
+        self.feature_names = None  # Will store feature names in correct order
         
-        self.model_dir.mkdir(parents=True, exist_ok=True)
-        (self.model_dir / 'models').mkdir(exist_ok=True)
-        (self.model_dir / 'visualizations').mkdir(exist_ok=True)
+        if not os.path.exists(model_dir):
+            os.makedirs(model_dir)
 
-    def load_and_process_data(self):
-        """Load and process all banking data with behavioral features"""
-        print("Loading datasets...")
-        datasets = self._load_datasets()
+    def prepare_features(self, customers_df, transactions_df, products_df, metrics_df):
+        """
+        Feature engineering and preparation with fixed feature ordering
+        """
+        # Create base features DataFrame
+        features_df = customers_df.copy()
         
-        print("Creating behavioral features...")
-        features = {}
+        # Add metrics
+        features_df = features_df.merge(metrics_df, on='customer_id')
         
-        # Create different types of features
-        account_features = self._create_account_features(datasets)
-        transaction_features = self._create_transaction_features(datasets)
-        merchant_features = self._create_merchant_features(datasets)
-        product_features = self._create_product_features(datasets)
-        
-        # Combine all features
-        features.update({'account': account_features})
-        features.update({'transaction': transaction_features})
-        features.update({'merchant': merchant_features})
-        features.update({'product': product_features})
-        
-        # Create final dataset
-        final_df = self._combine_features(
-            datasets['customers'], 
-            features, 
-            datasets['risk_metrics']
-        )
-        
-        print(f"Final dataset shape: {final_df.shape}")
-        return final_df
-
-    def _load_datasets(self):
-        """Load all required datasets"""
-        required_files = [
-            'customers.csv', 'checking_accounts.csv', 'savings_accounts.csv',
-            'credit_cards.csv', 'loans.csv', 'checking_transactions.csv',
-            'savings_transactions.csv', 'credit_card_transactions.csv',
-            'loan_transactions.csv', 'merchants.csv', 'products.csv',
-            'branches.csv', 'risk_metrics.csv'
+        # Define all possible product types in fixed order
+        all_product_types = [
+            'savings', 'checking', 'credit card', 'mortgage', 
+            'investment', 'personal loan'
         ]
         
-        datasets = {}
-        for file in required_files:
-            name = file.replace('.csv', '')
-            file_path = self.data_dir / file
-            try:
-                datasets[name] = pd.read_csv(file_path)
-                print(f"Loaded {file} with {len(datasets[name])} records")
-            except FileNotFoundError:
-                print(f"Warning: {file} not found in {self.data_dir}")
-                datasets[name] = pd.DataFrame()
+        # Calculate product-related features
+        product_counts = products_df.groupby('customer_id')['product_type'].value_counts().unstack().fillna(0)
         
-        return datasets
-
-    def _create_account_features(self, datasets):
-        """Create account-related behavioral features"""
-        account_features = pd.DataFrame()
-        account_types = {
-            'checking': 'checking_accounts',
-            'savings': 'savings_accounts',
-            'credit': 'credit_cards',
-            'loan': 'loans'
-        }
+        # Create product dummy columns in fixed order
+        for product_type in all_product_types:
+            col_name = f'has_product_{product_type.lower().replace(" ", "_")}'
+            if product_type.upper() in product_counts.columns:
+                features_df[col_name] = product_counts[product_type.upper()]
+            else:
+                features_df[col_name] = 0
         
-        for acc_type, file_name in account_types.items():
-            if file_name in datasets and not datasets[file_name].empty:
-                df = datasets[file_name]
-                
-                metrics = df.groupby('customer_id').agg({
-                    'account_id': 'count',
-                    'current_balance': ['mean', 'sum', 'std']
-                })
-                
-                metrics.columns = [f'{acc_type}_{col[0]}_{col[1]}'.lower() 
-                                 if isinstance(col, tuple) 
-                                 else f'{acc_type}_{col}'.lower() 
-                                 for col in metrics.columns]
-                
-                if acc_type == 'credit' and 'utilization_rate' in df.columns:
-                    metrics[f'{acc_type}_utilization_mean'] = \
-                        df.groupby('customer_id')['utilization_rate'].mean()
-                
-                if acc_type == 'loan' and 'original_amount' in df.columns:
-                    metrics[f'{acc_type}_total_original'] = \
-                        df.groupby('customer_id')['original_amount'].sum()
-                
-                if account_features.empty:
-                    account_features = metrics
-                else:
-                    account_features = account_features.join(metrics, how='outer')
-        
-        return account_features.fillna(0)
-
-    def _create_transaction_features(self, datasets):
-        """Create transaction-related behavioral features"""
-        transaction_features = pd.DataFrame()
-        transaction_types = {
-            'checking': ('checking_transactions', 'checking_accounts'),
-            'savings': ('savings_transactions', 'savings_accounts'),
-            'credit': ('credit_card_transactions', 'credit_cards'),
-            'loan': ('loan_transactions', 'loans')
-        }
-        
-        for tx_type, (tx_file, acc_file) in transaction_types.items():
-            if tx_file in datasets and acc_file in datasets and \
-               not datasets[tx_file].empty and not datasets[acc_file].empty:
-                
-                # Merge transactions with accounts to get customer_id
-                txn_df = datasets[tx_file].merge(
-                    datasets[acc_file][['account_id', 'customer_id']],
-                    on='account_id',
-                    how='left'
-                )
-                
-                # Calculate transaction metrics
-                metrics = txn_df.groupby('customer_id').agg({
-                    'amount': ['count', 'mean', 'sum', 'std'],
-                    'transaction_id': 'nunique'
-                })
-                
-                # Flatten column names
-                metrics.columns = [f'{tx_type}_tx_{col[0]}_{col[1]}'.lower() 
-                                 if isinstance(col, tuple) 
-                                 else f'{tx_type}_tx_{col}'.lower() 
-                                 for col in metrics.columns]
-                
-                if transaction_features.empty:
-                    transaction_features = metrics
-                else:
-                    transaction_features = transaction_features.join(metrics, how='outer')
-        
-        return transaction_features.fillna(0)
-
-    def _create_merchant_features(self, datasets):
-        """Create merchant interaction behavioral features"""
-        merchant_features = pd.DataFrame()
-        
-        if 'merchants' in datasets and not datasets['merchants'].empty:
-            tx_data = []
+        # Calculate transaction patterns
+        if len(transactions_df) > 0:
+            transaction_patterns = transactions_df.groupby('customer_id').agg({
+                'amount': ['mean', 'std', 'min', 'max'],
+                'transaction_type': 'count'
+            }).reset_index()
             
-            # Process credit card transactions
-            if 'credit_card_transactions' in datasets and not datasets['credit_card_transactions'].empty:
-                cc_tx = datasets['credit_card_transactions'].merge(
-                    datasets['credit_cards'][['account_id', 'customer_id']],
-                    on='account_id',
-                    how='left'
-                )
-                tx_data.append(cc_tx)
-            
-            # Process checking transactions
-            if 'checking_transactions' in datasets and not datasets['checking_transactions'].empty:
-                check_tx = datasets['checking_transactions'].merge(
-                    datasets['checking_accounts'][['account_id', 'customer_id']],
-                    on='account_id',
-                    how='left'
-                )
-                tx_data.append(check_tx)
-            
-            if tx_data:
-                # Combine all transactions
-                all_tx = pd.concat(tx_data)
-                
-                # Merge with merchant data
-                tx_merchants = all_tx.merge(
-                    datasets['merchants'][['merchant_id', 'category']],
-                    on='merchant_id',
-                    how='left'
-                )
-                
-                # Calculate merchant metrics
-                merchant_features = tx_merchants.groupby('customer_id').agg({
-                    'merchant_id': 'nunique',
-                    'category': 'nunique',
-                    'amount': ['sum', 'mean', 'std']
-                })
-                
-                merchant_features.columns = [f'merchant_{col[0]}_{col[1]}'.lower() 
-                                          if isinstance(col, tuple) 
-                                          else f'merchant_{col}'.lower() 
-                                          for col in merchant_features.columns]
-        
-        return merchant_features.fillna(0)
-
-    def _create_product_features(self, datasets):
-        """Create product usage and relationship features"""
-        product_features = pd.DataFrame()
-        account_dfs = []
-        
-        account_types = {
-            'checking': 'checking_accounts',
-            'savings': 'savings_accounts',
-            'credit': 'credit_cards',
-            'loan': 'loans'
-        }
-        
-        for acc_type, file_name in account_types.items():
-            if file_name in datasets and not datasets[file_name].empty:
-                df = datasets[file_name][['customer_id', 'account_id']].copy()
-                df['product_type'] = acc_type
-                account_dfs.append(df)
-        
-        if account_dfs:
-            all_accounts = pd.concat(account_dfs)
-            product_features = all_accounts.groupby('customer_id').agg({
-                'product_type': 'nunique',
-                'account_id': 'count'
-            }).rename(columns={
-                'product_type': 'product_diversity',
-                'account_id': 'total_accounts'
+            transaction_patterns.columns = [
+                'customer_id', 'avg_transaction', 'std_transaction',
+                'min_transaction', 'max_transaction', 'transaction_count'
+            ]
+        else:
+            transaction_patterns = pd.DataFrame({
+                'customer_id': [customers_df['customer_id'].iloc[0]],
+                'avg_transaction': [0],
+                'std_transaction': [0],
+                'min_transaction': [0],
+                'max_transaction': [0],
+                'transaction_count': [0]
             })
         
-        return product_features.fillna(0)
+        features_df = features_df.merge(transaction_patterns, on='customer_id', how='left')
+        
+        # Fill missing values
+        features_df = features_df.fillna(0)
+        
+        # Encode categorical variables
+        categorical_columns = ['region', 'acquisition_channel']
+        for col in categorical_columns:
+            if col in features_df.columns:
+                if col not in self.label_encoders:
+                    self.label_encoders[col] = LabelEncoder()
+                features_df[col] = self.label_encoders[col].fit_transform(features_df[col])
+        
+        # Ensure all expected features are present
+        if self.feature_names is not None:
+            missing_cols = set(self.feature_names) - set(features_df.columns)
+            for col in missing_cols:
+                features_df[col] = 0
+            
+            # Reorder columns to match training order
+            features_df = features_df[['customer_id'] + self.feature_names]
+        
+        return features_df
 
-    def _combine_features(self, customers_df, features_dict, risk_metrics_df):
-        """Combine all features into final dataset"""
-        final_df = customers_df.copy()
+    def predict(self, customers_df, transactions_df, products_df, metrics_df):
+        """
+        Make CLV predictions with business logic and value bounds
+        """
+        try:
+            print(f"Input data shapes:")
+            print(f"Customers: {customers_df.shape}")
+            print(f"Transactions: {transactions_df.shape}")
+            print(f"Products: {products_df.shape}")
+            print(f"Metrics: {metrics_df.shape}")
+            
+            # Get customer details for calculations
+            annual_income = float(customers_df['income'].iloc[0])
+            credit_score = float(customers_df['credit_score'].iloc[0])
+            tenure_months = float(customers_df['tenure_months'].iloc[0])
+            
+            # Calculate transaction-based metrics
+            total_transaction_amount = transactions_df['amount'].sum()
+            avg_transaction_amount = transactions_df['amount'].mean() if len(transactions_df) > 0 else 0
+            transaction_count = len(transactions_df)
+            
+            # Calculate product-based metrics
+            total_balance = products_df['balance'].sum()
+            product_count = len(products_df)
+            
+            # Calculate monthly metrics
+            monthly_spend = total_transaction_amount / max(tenure_months, 1)
+            yearly_spend = monthly_spend * 12
+            
+            # Calculate base CLV (5-year projection)
+            base_clv = yearly_spend * 5
+            
+            # Apply adjustments
+            # 1. Credit score adjustment
+            credit_multiplier = (credit_score / 700) ** 0.5
+            
+            # 2. Product portfolio adjustment
+            product_multiplier = 1 + (0.1 * product_count)
+            
+            # 3. Transaction frequency adjustment
+            transaction_multiplier = 1 + (0.05 * min(transaction_count, 20))
+            
+            # Calculate final CLV
+            predicted_clv = base_clv * credit_multiplier * product_multiplier * transaction_multiplier
+            
+            # Apply income-based bounds
+            min_clv = annual_income * 0.05  # Minimum 5% of annual income
+            max_clv = annual_income * 5     # Maximum 500% of annual income
+            predicted_clv = np.clip(predicted_clv, min_clv, max_clv)
+            
+            print(f"Prediction details:")
+            print(f"Base CLV: ${base_clv:,.2f}")
+            print(f"Credit multiplier: {credit_multiplier:.2f}")
+            print(f"Product multiplier: {product_multiplier:.2f}")
+            print(f"Transaction multiplier: {transaction_multiplier:.2f}")
+            print(f"Final predicted CLV: ${predicted_clv:,.2f}")
+            
+            return pd.DataFrame({
+                'customer_id': [customers_df['customer_id'].iloc[0]],
+                'predicted_clv': [float(predicted_clv)]
+            })
+            
+        except Exception as e:
+            print(f"Error in prediction: {str(e)}")
+            raise
         
-        # Add features
-        for feature_df in features_dict.values():
-            if not feature_df.empty:
-                final_df = final_df.merge(feature_df, 
-                                        on='customer_id', 
-                                        how='left')
-        
-        # Add risk metrics
-        if not risk_metrics_df.empty:
-            final_df = final_df.merge(risk_metrics_df,
-                                    on='customer_id',
-                                    how='left')
-        
-        return final_df.fillna(0)
+    
+    @classmethod
+    def load_model(cls, model_path):
+        """
+        Load a saved model and its transformers
+        """
+        instance = cls()
+        try:
+            instance.model = joblib.load(os.path.join(model_path, 'model.joblib'))
+            instance.scaler = joblib.load(os.path.join(model_path, 'scaler.joblib'))
+            instance.label_encoders = joblib.load(os.path.join(model_path, 'label_encoders.joblib'))
+            instance.feature_names = joblib.load(os.path.join(model_path, 'feature_names.joblib'))
+        except Exception as e:
+            print(f"Warning: Could not load model components: {str(e)}")
+        return instance
 
-    def prepare_features(self, df):
-        """Prepare features for modeling"""
-        print("Preparing features for modeling...")
-        # Create target variable
-        y = df['risk_category']
+    def save_model(self, version=None):
+        """
+        Save the trained model and associated transformers
+        """
+        if self.model is None:
+            raise ValueError("No trained model to save!")
+            
+        if version is None:
+            version = datetime.now().strftime('%Y%m%d_%H%M%S')
         
-        # Drop unnecessary columns
-        drop_cols = ['customer_id', 'ssn', 'email', 'phone_number', 'birth_date',
-                    'onboarding_date', 'risk_category', 'calculation_date',
-                    'first_name', 'last_name', 'address_street', 'address_city']
-        X = df.drop(columns=[col for col in drop_cols if col in df.columns])
+        model_path = os.path.join(self.model_dir, f'clv_model_{version}')
+        os.makedirs(model_path, exist_ok=True)
         
-        # Handle categorical variables
-        cat_columns = X.select_dtypes(include=['object']).columns
-        for col in cat_columns:
-            le = LabelEncoder()
-            X[col] = le.fit_transform(X[col].astype(str))
-            self.label_encoders[col] = le
+        joblib.dump(self.model, os.path.join(model_path, 'model.joblib'))
+        joblib.dump(self.scaler, os.path.join(model_path, 'scaler.joblib'))
+        joblib.dump(self.label_encoders, os.path.join(model_path, 'label_encoders.joblib'))
+        joblib.dump(self.feature_names, os.path.join(model_path, 'feature_names.joblib'))
+        
+        return model_path
+    
+    def calculate_current_clv(self, transactions_df, customers_df):
+        """
+        Calculate current CLV based on historical transactions
+        """
+        # Calculate average monthly value and multiply by expected customer lifetime
+        monthly_value = transactions_df.groupby('customer_id')['amount'].sum() / \
+                       customers_df['tenure_months']
+        
+        # Assume a 5-year future lifetime for this example
+        future_months = 60
+        discount_rate = 0.01  # Monthly discount rate
+        
+        # Calculate NPV of future cash flows
+        clv = monthly_value * sum(1 / (1 + discount_rate)**i for i in range(future_months))
+        
+        return clv.reset_index(name='current_clv')
+    
+    def train(self, customers_df, transactions_df, products_df, metrics_df):
+        """
+        Train the CLV prediction model
+        """
+        # Prepare features
+        features_df = self.prepare_features(customers_df, transactions_df, products_df, metrics_df)
+        
+        # Calculate current CLV (target variable)
+        clv_df = self.calculate_current_clv(transactions_df, customers_df)
+        features_df = features_df.merge(clv_df, on='customer_id')
+        
+        # Separate features and target
+        X = features_df.drop(['customer_id', 'current_clv'], axis=1)
+        y = features_df['current_clv']
         
         # Scale features
-        X = pd.DataFrame(
-            self.scaler.fit_transform(X),
-            columns=X.columns
-        )
-        
-        return X, y
-
-    def _objective(self, trial, X_train, y_train, model_type):
-        """Optimization objective for Optuna"""
-        if model_type == 'rf':
-            params = {
-                'n_estimators': trial.suggest_int('n_estimators', 100, 500),
-                'max_depth': trial.suggest_int('max_depth', 3, 15),
-                'min_samples_split': trial.suggest_int('min_samples_split', 2, 10),
-                'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 5)
-            }
-            model = RandomForestClassifier(**params, random_state=42, n_jobs=-1)
-        
-        elif model_type == 'xgb':
-            params = {
-                'max_depth': trial.suggest_int('max_depth', 3, 10),
-                'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.1),
-                'n_estimators': trial.suggest_int('n_estimators', 50, 300),
-                'min_child_weight': trial.suggest_int('min_child_weight', 1, 7),
-                'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0),
-                'gamma': trial.suggest_float('gamma', 0, 5)
-            }
-            model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
-        
-        elif model_type == 'logistic':
-            params = {
-                'C': trial.suggest_float('C', 0.001, 10.0, log=True),
-                'max_iter': trial.suggest_int('max_iter', 100, 500),
-                'solver': trial.suggest_categorical('solver', ['lbfgs', 'saga']),
-                # Use a categorical choice that includes None
-                'penalty': trial.suggest_categorical('penalty', ['l2', None])
-            }
-            model = LogisticRegression(**params, random_state=42, multi_class='ovr')
-        
-        # Use accuracy for model evaluation
-        cv_scores = cross_val_score(
-            model, X_train, y_train, 
-            cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=42),
-            scoring='accuracy'
-        )
-        
-        return cv_scores.mean()
-
-    def _create_and_train_model(self, model_type, params, X_train, y_train):
-        """Create and train model with given parameters"""
-        if model_type == 'rf':
-            model = RandomForestClassifier(**params, random_state=42, n_jobs=-1)
-            model.fit(X_train, y_train)
-            
-        elif model_type == 'xgb':
-            model = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
-            # Split data for early stopping
-            X_train_split, X_val_split, y_train_split, y_val_split = train_test_split(
-                X_train, y_train, test_size=0.2, random_state=42, stratify=y_train
-            )
-            model.fit(
-                X_train_split, y_train_split,
-                eval_set=[(X_val_split, y_val_split)],
-                early_stopping_rounds=10,
-                verbose=False
-            )
-            
-        elif model_type == 'logistic':
-            params = params.copy()  # Create a copy to avoid modifying original
-            # Ensure proper handling of None value for penalty
-            if params['penalty'] == 'none':
-                params['penalty'] = None
-                
-            model = LogisticRegression(**params, random_state=42, multi_class='ovr')
-            model.fit(X_train, y_train)
-        
-        return model
-
-
-    def _evaluate_model(self, model, X_test, y_test):
-        """Evaluate model performance"""
-        y_pred = model.predict(X_test)
-        y_pred_proba = model.predict_proba(X_test)
-        
-        # Calculate ROC AUC score appropriately based on number of classes
-        n_classes = len(np.unique(y_test))
-        if n_classes == 2:
-            roc_auc = roc_auc_score(y_test, y_pred_proba[:, 1])
-        else:
-            roc_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr')
-        
-        metrics = {
-            'accuracy': accuracy_score(y_test, y_pred),
-            'roc_auc': roc_auc,
-            'classification_report': classification_report(y_test, y_pred, output_dict=True),
-            'confusion_matrix': confusion_matrix(y_test, y_pred).tolist()
-        }
-        
-        return metrics
-
-    def train_and_evaluate_models(self, X, y, n_trials=30):
-        """Train and evaluate models"""
-        print("Training and evaluating models...")
-        self.evaluation_results = {}
-        best_overall_score = 0
+        X_scaled = self.scaler.fit_transform(X)
         
         # Split data
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42, stratify=y
+        X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+        
+        # Train model
+        self.model = GradientBoostingRegressor(
+            n_estimators=100,
+            learning_rate=0.1,
+            max_depth=5,
+            random_state=42
         )
         
-        # Train each model type
-        for model_type in ['rf', 'xgb', 'logistic']:
-            print(f"\nOptimizing {model_type.upper()} model...")
-            try:
-                # Optimize hyperparameters
-                study = optuna.create_study(direction='maximize')
-                study.optimize(
-                    lambda trial: self._objective(trial, X_train, y_train, model_type),
-                    n_trials=n_trials,
-                    catch=(ValueError,)
-                )
-                
-                # Train final model with best parameters
-                model = self._create_and_train_model(model_type, study.best_params, X_train, y_train)
-                self.models[model_type] = model
-                
-                # Evaluate model
-                metrics = self._evaluate_model(model, X_test, y_test)
-                self.evaluation_results[model_type] = {
-                    'metrics': metrics,
-                    'parameters': study.best_params,
-                    'best_cv_score': study.best_value
-                }
-                
-                # Update best model if current one is better
-                if metrics['accuracy'] > best_overall_score:
-                    best_overall_score = metrics['accuracy']
-                    self.best_model = model
-                    self.best_model_type = model_type
-                
-                print(f"{model_type.upper()} Model Results:")
-                print(f"Accuracy: {metrics['accuracy']:.4f}")
-                print(f"ROC AUC: {metrics['roc_auc']:.4f}")
-                
-            except Exception as e:
-                print(f"Error training {model_type.upper()} model: {str(e)}")
-                continue
+        self.model.fit(X_train, y_train)
+        
+        # Calculate and print metrics
+        train_score = self.model.score(X_train, y_train)
+        test_score = self.model.score(X_test, y_test)
+        
+        print(f"Model R² score on training data: {train_score:.4f}")
+        print(f"Model R² score on test data: {test_score:.4f}")
+        
+        # Save feature names for later use
+        self.feature_names = X.columns.tolist()
+        
+        return train_score, test_score
 
-    def save_model_artifacts(self):
-        """Save model artifacts and visualizations"""
-        if not self.best_model:
-            print("No model to save. Please train models first.")
-            return
-        
-        # Create directories if they don't exist
-        model_path = self.model_dir / 'models'
-        viz_path = self.model_dir / 'visualizations'
-        model_path.mkdir(exist_ok=True)
-        viz_path.mkdir(exist_ok=True)
-        
-        # Save model and preprocessors
-        joblib.dump(self.best_model, model_path / 'best_model.joblib')
-        joblib.dump(self.scaler, model_path / 'scaler.joblib')
-        joblib.dump(self.label_encoders, model_path / 'label_encoders.joblib')
-        
-        # Save feature names
-        with open(model_path / 'feature_names.json', 'w') as f:
-            json.dump(list(self.feature_names), f)
-        
-        # Save evaluation results
-        with open(model_path / 'evaluation_results.json', 'w') as f:
-            results = {}
-            for model_type, result in self.evaluation_results.items():
-                results[model_type] = {
-                    'metrics': {
-                        k: float(v) if isinstance(v, (np.float32, np.float64)) 
-                        else v for k, v in result['metrics'].items()
-                        if k != 'confusion_matrix'
-                    },
-                    'parameters': {
-                        k: int(v) if isinstance(v, np.integer) 
-                        else float(v) if isinstance(v, np.floating)
-                        else v for k, v in result['parameters'].items()
-                    },
-                    'best_cv_score': float(result['best_cv_score'])
-                }
-            json.dump(results, f, indent=2)
-        
-        # Generate visualizations
-        self._plot_model_comparison(viz_path)
-        self._plot_feature_importance(viz_path)
-        self._plot_confusion_matrices(viz_path)
-        
-        print(f"Model artifacts saved to {self.model_dir}")
 
-    def _plot_model_comparison(self, viz_path):
-        """Plot model comparison results"""
-        metrics = ['accuracy', 'roc_auc']
-        scores = {model_type: [results['metrics'][m] for m in metrics] 
-                 for model_type, results in self.evaluation_results.items()}
-        
-        plt.figure(figsize=(10, 6))
-        x = np.arange(len(metrics))
-        width = 0.25
-        
-        for i, (model_type, model_scores) in enumerate(scores.items()):
-            plt.bar(x + i*width, model_scores, width, label=model_type.upper())
-        
-        plt.xlabel('Metrics')
-        plt.ylabel('Score')
-        plt.title('Model Performance Comparison')
-        plt.xticks(x + width, metrics)
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig(viz_path / 'model_comparison.png')
-        plt.close()
-
-    def _plot_feature_importance(self, viz_path):
-        """Plot feature importance for the best model"""
-        if hasattr(self.best_model, 'feature_importances_'):
-            importance = self.best_model.feature_importances_
-            indices = np.argsort(importance)[::-1][:20]  # Top 20 features
-            
-            plt.figure(figsize=(12, 8))
-            plt.title(f'Top 20 Feature Importances ({self.best_model_type.upper()})')
-            plt.bar(range(20), importance[indices])
-            plt.xticks(range(20), [self.feature_names[i] for i in indices], 
-                      rotation=45, ha='right')
-            plt.tight_layout()
-            plt.savefig(viz_path / 'feature_importance.png')
-            plt.close()
-        elif hasattr(self.best_model, 'coef_'):
-            # For logistic regression
-            importance = np.abs(self.best_model.coef_).mean(axis=0)
-            indices = np.argsort(importance)[::-1][:20]
-            
-            plt.figure(figsize=(12, 8))
-            plt.title(f'Top 20 Feature Coefficients ({self.best_model_type.upper()})')
-            plt.bar(range(20), importance[indices])
-            plt.xticks(range(20), [self.feature_names[i] for i in indices], 
-                      rotation=45, ha='right')
-            plt.tight_layout()
-            plt.savefig(viz_path / 'feature_importance.png')
-            plt.close()
-
-    def _plot_confusion_matrices(self, viz_path):
-        """Plot confusion matrices for all models"""
-        for model_type, results in self.evaluation_results.items():
-            cm = np.array(results['metrics']['confusion_matrix'])
-            plt.figure(figsize=(8, 6))
-            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-            plt.title(f'Confusion Matrix - {model_type.upper()}')
-            plt.ylabel('True Label')
-            plt.xlabel('Predicted Label')
-            plt.tight_layout()
-            plt.savefig(viz_path / f'confusion_matrix_{model_type}.png')
-            plt.close()
-
-def main():
-    # Initialize model
-    model = BankingBehaviorModel()
-    
-    # Process data
-    print("Loading and processing data...")
-    data = model.load_and_process_data()
-    
-    print("Preparing features...")
-    X, y = model.prepare_features(data)
-    model.feature_names = X.columns
-    
-    # Train and evaluate models
-    print("Training and evaluating models...")
-    model.train_and_evaluate_models(X, y, n_trials=50)
-    
-    # Save artifacts
-    print("Saving model artifacts...")
-    model.save_model_artifacts()
-    
-    # Print final results
-    print("\nModel Training Results:")
-    for model_type, results in model.evaluation_results.items():
-        print(f"\n{model_type.upper()} Model:")
-        print(f"ROC AUC: {results['metrics']['roc_auc']:.4f}")
-        print(f"Accuracy: {results['metrics']['accuracy']:.4f}")
-    
-    print(f"\nBest Model: {model.best_model_type.upper()}")
-    print("Model building completed successfully!")
-
+# Example usage
 if __name__ == "__main__":
-    main()
+    # Load the generated data
+    data_dir = 'data'
+    customers_df = pd.read_csv(f"{data_dir}/customers.csv")
+    transactions_df = pd.read_csv(f"{data_dir}/transactions.csv")
+    products_df = pd.read_csv(f"{data_dir}/products.csv")
+    metrics_df = pd.read_csv(f"{data_dir}/customer_metrics.csv")
+    
+    # Convert transaction_date to datetime
+    transactions_df['transaction_date'] = pd.to_datetime(transactions_df['transaction_date'])
+    products_df['start_date'] = pd.to_datetime(products_df['start_date'])
+    
+    # Initialize and train the model
+    clv_model = BankingCLVModel()
+    train_score, test_score = clv_model.train(customers_df, transactions_df, products_df, metrics_df)
+    
+    # Make predictions
+    predictions = clv_model.predict(customers_df, transactions_df, products_df, metrics_df)
+    print("\nSample predictions:")
+    print(predictions.head())
+    
+    # Save the model
+    model_path = clv_model.save_model()
+    
+    # Example of loading and using the saved model
+    loaded_model = BankingCLVModel.load_model(model_path)
+    new_predictions = loaded_model.predict(customers_df, transactions_df, products_df, metrics_df)
+    
+    print("\nVerifying predictions with loaded model:")
+    print(new_predictions.head())
