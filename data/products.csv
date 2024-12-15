@@ -1,0 +1,2022 @@
+customer_id,product_type,start_date,balance,status
+0,Checking,2020-02-16,19416.3,Active
+0,Personal Loan,2020-11-06,57948.57,Active
+1,Savings,2020-03-30,13817.57,Active
+1,Mortgage,2020-06-22,4851.5,Active
+1,Credit Card,2020-08-04,0.0,Active
+2,Mortgage,2020-07-18,17809.7,Active
+2,Personal Loan,2020-09-05,71607.02,Active
+2,Checking,2020-04-02,9152.08,Active
+3,Credit Card,2020-02-06,0.0,Active
+3,Mortgage,2020-12-07,24340.26,Active
+4,Personal Loan,2020-06-14,3712.8,Active
+4,Credit Card,2020-03-31,0.0,Active
+4,Checking,2020-08-03,30978.18,Active
+5,Personal Loan,2020-08-07,58754.39,Active
+6,Investment,2020-10-28,68298.16,Active
+6,Personal Loan,2020-11-17,51538.24,Active
+7,Credit Card,2020-05-04,0.0,Active
+8,Credit Card,2020-03-06,0.0,Active
+8,Savings,2020-11-09,33445.78,Active
+8,Mortgage,2020-03-22,41677.62,Active
+9,Checking,2020-04-25,34540.93,Active
+10,Investment,2020-11-06,12915.0,Active
+11,Mortgage,2020-02-04,11454.3,Active
+12,Personal Loan,2020-09-27,51880.72,Active
+12,Mortgage,2020-11-30,117874.65,Active
+12,Investment,2020-08-05,13256.81,Active
+13,Savings,2020-04-12,3430.93,Active
+13,Mortgage,2020-10-23,52496.92,Active
+13,Personal Loan,2020-11-10,3116.0,Active
+14,Investment,2020-06-09,29533.34,Active
+14,Checking,2020-05-11,10480.01,Active
+14,Savings,2020-10-02,42521.42,Active
+15,Personal Loan,2020-10-12,20546.95,Active
+16,Personal Loan,2020-11-09,8259.68,Active
+16,Checking,2020-11-02,22768.07,Active
+17,Checking,2020-12-21,13524.99,Active
+17,Personal Loan,2020-06-17,64494.36,Active
+18,Investment,2020-02-08,33620.08,Active
+18,Mortgage,2020-08-30,1374.41,Active
+19,Mortgage,2020-06-24,46279.71,Active
+20,Mortgage,2020-05-23,11642.44,Active
+20,Checking,2020-05-19,4864.38,Active
+20,Personal Loan,2020-01-12,20793.96,Active
+21,Personal Loan,2020-03-14,41654.68,Active
+21,Credit Card,2020-04-09,0.0,Active
+21,Mortgage,2020-05-25,5777.89,Active
+22,Credit Card,2020-05-22,0.0,Active
+23,Mortgage,2020-03-22,8916.82,Active
+23,Personal Loan,2020-08-18,20040.64,Active
+24,Savings,2020-12-27,17252.62,Active
+24,Mortgage,2020-02-27,34006.13,Active
+24,Checking,2020-04-21,51661.53,Active
+25,Credit Card,2020-03-09,0.0,Active
+26,Credit Card,2020-03-07,0.0,Active
+26,Mortgage,2020-01-30,6443.43,Active
+26,Personal Loan,2020-04-23,49459.99,Active
+27,Personal Loan,2020-01-03,12277.76,Active
+28,Checking,2020-10-26,77865.83,Active
+28,Personal Loan,2020-02-16,52933.39,Active
+29,Credit Card,2020-04-15,0.0,Active
+29,Mortgage,2020-10-26,26032.66,Active
+30,Credit Card,2020-09-11,0.0,Active
+30,Mortgage,2020-02-24,22888.59,Active
+30,Investment,2020-11-18,21848.48,Active
+31,Personal Loan,2020-10-24,25798.95,Active
+31,Savings,2020-07-22,124229.43,Active
+32,Credit Card,2020-04-13,0.0,Active
+32,Mortgage,2020-02-15,5029.04,Active
+32,Savings,2020-02-13,15597.02,Active
+33,Savings,2020-04-07,35927.36,Active
+33,Personal Loan,2020-11-08,56368.98,Active
+34,Investment,2020-07-08,76337.03,Active
+34,Savings,2020-03-23,17333.7,Active
+34,Checking,2020-06-15,22220.34,Active
+35,Checking,2020-01-16,31453.1,Active
+36,Personal Loan,2020-10-08,77770.64,Active
+37,Checking,2020-10-05,24713.78,Active
+38,Investment,2020-06-02,17053.76,Active
+39,Mortgage,2020-02-19,126573.18,Active
+40,Investment,2020-07-04,14902.26,Active
+40,Credit Card,2020-03-10,0.0,Active
+40,Personal Loan,2020-05-29,7510.03,Active
+41,Savings,2020-03-29,1089.81,Active
+41,Checking,2020-05-20,5882.93,Active
+41,Mortgage,2020-07-01,18559.95,Active
+42,Investment,2020-08-13,11595.05,Active
+42,Credit Card,2020-08-17,0.0,Active
+42,Personal Loan,2020-05-10,116465.68,Active
+43,Savings,2020-07-10,8746.36,Active
+43,Mortgage,2020-04-12,26982.51,Active
+43,Investment,2020-11-24,35605.68,Active
+44,Checking,2020-04-01,7668.62,Active
+44,Credit Card,2020-03-03,0.0,Active
+44,Investment,2020-01-29,6808.49,Active
+45,Savings,2020-06-22,10009.88,Active
+45,Checking,2020-01-29,9935.44,Active
+45,Investment,2020-11-11,8518.0,Active
+46,Mortgage,2020-07-10,7664.71,Active
+46,Investment,2020-05-31,63922.36,Active
+46,Personal Loan,2020-08-02,29522.05,Active
+47,Checking,2020-11-18,20823.86,Active
+47,Credit Card,2020-12-11,0.0,Active
+48,Checking,2020-10-09,19476.2,Active
+48,Credit Card,2020-02-13,0.0,Active
+49,Personal Loan,2020-03-16,39665.83,Active
+50,Savings,2020-08-02,13859.98,Active
+50,Credit Card,2020-09-23,0.0,Active
+50,Investment,2020-03-09,47536.14,Active
+51,Mortgage,2020-04-03,27710.07,Active
+51,Investment,2020-01-31,21000.42,Active
+51,Personal Loan,2020-01-11,45380.01,Active
+52,Credit Card,2020-12-06,0.0,Active
+52,Mortgage,2020-12-14,24631.94,Active
+52,Savings,2020-01-20,9997.75,Active
+53,Mortgage,2020-06-17,21984.53,Active
+53,Credit Card,2020-11-18,0.0,Active
+54,Checking,2020-02-17,9987.79,Active
+55,Mortgage,2020-11-04,22788.43,Active
+55,Personal Loan,2020-03-09,109572.21,Active
+56,Savings,2020-11-27,16562.66,Active
+56,Credit Card,2020-07-23,0.0,Active
+57,Investment,2020-10-29,8703.88,Active
+58,Savings,2020-01-15,19488.21,Active
+58,Personal Loan,2020-10-18,16753.29,Active
+58,Credit Card,2020-07-26,0.0,Active
+59,Credit Card,2020-01-04,0.0,Active
+60,Savings,2020-01-29,13510.76,Active
+60,Checking,2020-05-30,28412.39,Active
+61,Checking,2020-07-04,66545.32,Active
+62,Personal Loan,2020-12-24,65069.6,Active
+62,Savings,2020-08-25,12532.14,Active
+63,Credit Card,2020-01-17,0.0,Active
+64,Investment,2020-03-24,32296.68,Active
+64,Checking,2020-12-09,23062.41,Active
+64,Savings,2020-12-06,27436.93,Active
+65,Personal Loan,2020-08-14,16145.44,Active
+66,Checking,2020-06-26,6603.84,Active
+66,Investment,2020-10-14,8693.81,Active
+67,Investment,2020-05-16,91794.29,Active
+68,Credit Card,2020-08-24,0.0,Active
+69,Personal Loan,2020-09-11,14480.6,Active
+69,Mortgage,2020-05-01,5961.93,Active
+70,Investment,2020-01-24,16336.87,Active
+71,Mortgage,2020-04-25,3992.46,Active
+72,Personal Loan,2020-03-26,30713.82,Active
+72,Investment,2020-02-22,16983.95,Active
+73,Investment,2020-01-15,9234.44,Active
+73,Personal Loan,2020-04-10,29288.0,Active
+73,Credit Card,2020-04-16,0.0,Active
+74,Savings,2020-08-01,17600.43,Active
+74,Investment,2020-11-01,2823.01,Active
+75,Mortgage,2020-02-19,231675.38,Active
+75,Checking,2020-04-27,37014.4,Active
+76,Checking,2020-01-21,8287.68,Active
+76,Savings,2020-06-19,49836.16,Active
+76,Personal Loan,2020-11-01,21751.11,Active
+77,Savings,2020-01-09,30073.29,Active
+77,Credit Card,2020-05-28,0.0,Active
+77,Checking,2020-05-25,5528.64,Active
+78,Checking,2020-04-04,477758.36,Active
+79,Credit Card,2020-09-14,0.0,Active
+79,Checking,2020-12-02,85829.32,Active
+79,Savings,2020-05-14,17153.98,Active
+80,Investment,2020-12-03,9116.03,Active
+80,Personal Loan,2020-12-09,59503.01,Active
+81,Mortgage,2020-06-04,87021.84,Active
+81,Personal Loan,2020-07-17,46610.53,Active
+82,Investment,2020-10-10,18509.76,Active
+82,Personal Loan,2020-07-28,62052.53,Active
+83,Mortgage,2020-09-17,11371.25,Active
+83,Checking,2020-10-31,25630.63,Active
+84,Credit Card,2020-05-06,0.0,Active
+84,Mortgage,2020-04-01,3860.72,Active
+84,Personal Loan,2020-07-08,13464.0,Active
+85,Savings,2020-04-21,19317.47,Active
+86,Investment,2020-08-10,30490.46,Active
+87,Checking,2020-09-19,20331.82,Active
+87,Savings,2020-07-07,11301.78,Active
+87,Investment,2020-02-27,11152.48,Active
+88,Personal Loan,2020-10-07,14065.18,Active
+89,Investment,2020-09-11,27960.69,Active
+89,Savings,2020-10-10,58078.34,Active
+89,Mortgage,2020-08-27,35289.91,Active
+90,Investment,2020-09-14,45323.5,Active
+90,Checking,2020-08-09,16526.62,Active
+91,Credit Card,2020-08-13,0.0,Active
+91,Investment,2020-08-23,6253.74,Active
+92,Checking,2020-06-03,48388.46,Active
+93,Investment,2020-10-14,18111.48,Active
+94,Investment,2020-08-29,63582.26,Active
+95,Personal Loan,2020-09-08,74006.16,Active
+95,Credit Card,2020-10-28,0.0,Active
+95,Savings,2020-10-04,61786.04,Active
+96,Mortgage,2020-05-15,2773.06,Active
+96,Investment,2020-10-22,8502.2,Active
+96,Checking,2020-02-03,87419.15,Active
+97,Investment,2020-10-15,24731.29,Active
+98,Credit Card,2020-07-15,0.0,Active
+99,Checking,2020-10-02,11285.21,Active
+99,Investment,2020-01-10,17595.12,Active
+100,Investment,2020-06-25,44864.88,Active
+101,Investment,2020-09-09,495295.68,Active
+101,Credit Card,2020-10-12,0.0,Active
+102,Personal Loan,2020-12-08,10569.91,Active
+102,Savings,2020-01-22,19119.62,Active
+102,Checking,2020-11-26,7552.61,Active
+103,Savings,2020-03-02,54931.93,Active
+103,Checking,2020-08-27,39664.28,Active
+103,Personal Loan,2020-12-19,20581.21,Active
+104,Credit Card,2020-05-20,0.0,Active
+105,Personal Loan,2020-08-10,10768.13,Active
+105,Savings,2020-06-18,22152.73,Active
+105,Credit Card,2020-05-19,0.0,Active
+106,Checking,2020-03-25,40273.66,Active
+107,Checking,2020-04-08,24582.11,Active
+107,Mortgage,2020-02-16,195848.15,Active
+108,Checking,2020-03-26,11084.3,Active
+108,Mortgage,2020-02-21,50415.75,Active
+108,Savings,2020-10-24,64284.93,Active
+109,Savings,2020-12-27,124483.03,Active
+109,Checking,2020-09-10,2651.79,Active
+110,Credit Card,2020-01-19,0.0,Active
+111,Credit Card,2020-03-30,0.0,Active
+111,Checking,2020-10-26,12439.48,Active
+112,Investment,2020-08-11,12804.15,Active
+112,Credit Card,2020-01-06,0.0,Active
+112,Personal Loan,2020-05-01,56017.45,Active
+113,Credit Card,2020-12-11,0.0,Active
+114,Personal Loan,2020-04-01,3785.99,Active
+114,Investment,2020-03-10,125790.87,Active
+115,Mortgage,2020-10-04,171869.1,Active
+116,Personal Loan,2020-06-26,3984.88,Active
+116,Savings,2020-02-03,12619.5,Active
+116,Investment,2020-08-29,41231.37,Active
+117,Checking,2020-07-30,16696.37,Active
+117,Mortgage,2020-04-22,53591.93,Active
+117,Credit Card,2020-09-29,0.0,Active
+118,Investment,2020-04-17,7174.22,Active
+118,Savings,2020-08-06,44628.53,Active
+118,Personal Loan,2020-09-23,72456.82,Active
+119,Investment,2020-10-16,42475.99,Active
+119,Mortgage,2020-12-25,86324.21,Active
+120,Checking,2020-03-22,6892.5,Active
+120,Savings,2020-10-29,3906.89,Active
+121,Personal Loan,2020-06-25,16720.01,Active
+121,Savings,2020-11-22,19118.41,Active
+122,Checking,2020-04-25,17024.0,Active
+122,Credit Card,2020-05-06,0.0,Active
+123,Mortgage,2020-10-06,20544.87,Active
+123,Personal Loan,2020-01-11,24108.43,Active
+124,Mortgage,2020-12-09,16905.86,Active
+125,Investment,2020-05-07,84828.46,Active
+126,Personal Loan,2020-11-26,44892.76,Active
+126,Mortgage,2020-01-29,12405.55,Active
+126,Investment,2020-03-17,37662.26,Active
+127,Checking,2020-04-11,57078.55,Active
+128,Investment,2020-01-26,15162.78,Active
+129,Mortgage,2020-12-28,214448.61,Active
+129,Personal Loan,2020-07-04,9393.52,Active
+129,Investment,2020-11-21,21178.96,Active
+130,Investment,2020-01-10,3809.34,Active
+131,Credit Card,2020-02-21,0.0,Active
+131,Checking,2020-07-13,48756.82,Active
+131,Mortgage,2020-04-02,58315.44,Active
+132,Credit Card,2020-06-01,0.0,Active
+133,Savings,2020-05-28,2806.12,Active
+133,Credit Card,2020-03-29,0.0,Active
+134,Personal Loan,2020-02-15,65576.11,Active
+134,Credit Card,2020-05-23,0.0,Active
+135,Checking,2020-10-01,28408.01,Active
+135,Savings,2020-02-15,11828.07,Active
+136,Personal Loan,2020-03-17,17535.31,Active
+137,Investment,2020-07-09,92857.97,Active
+137,Mortgage,2020-01-12,28678.5,Active
+137,Personal Loan,2020-10-22,18853.44,Active
+138,Checking,2020-04-30,4064.27,Active
+139,Checking,2020-06-03,18456.61,Active
+139,Savings,2020-07-04,12142.65,Active
+140,Credit Card,2020-06-01,0.0,Active
+141,Investment,2020-09-02,25381.56,Active
+142,Investment,2020-07-22,17926.05,Active
+142,Credit Card,2020-02-08,0.0,Active
+142,Personal Loan,2020-05-18,12426.6,Active
+143,Credit Card,2020-07-02,0.0,Active
+143,Mortgage,2020-05-31,205498.47,Active
+143,Personal Loan,2020-09-09,9068.91,Active
+144,Credit Card,2020-09-15,0.0,Active
+145,Checking,2020-09-27,54090.76,Active
+145,Savings,2020-10-29,8530.46,Active
+145,Investment,2020-02-26,14751.28,Active
+146,Personal Loan,2020-04-03,49799.75,Active
+146,Savings,2020-10-24,34038.18,Active
+147,Investment,2020-05-28,117248.03,Active
+148,Credit Card,2020-12-18,0.0,Active
+148,Investment,2020-10-06,12027.29,Active
+148,Savings,2020-01-24,45889.9,Active
+149,Savings,2020-07-12,182483.46,Active
+149,Credit Card,2020-03-15,0.0,Active
+149,Checking,2020-06-11,32053.74,Active
+150,Mortgage,2020-10-21,62407.9,Active
+150,Credit Card,2020-05-17,0.0,Active
+150,Checking,2020-07-05,6897.27,Active
+151,Savings,2020-10-14,133898.1,Active
+151,Investment,2020-02-25,19042.78,Active
+152,Credit Card,2020-08-18,0.0,Active
+153,Personal Loan,2020-04-19,164999.7,Active
+153,Investment,2020-06-16,38648.0,Active
+153,Checking,2020-02-14,17878.1,Active
+154,Investment,2020-07-19,16112.19,Active
+154,Savings,2020-05-13,19360.03,Active
+155,Checking,2020-07-29,9398.8,Active
+155,Mortgage,2020-06-13,23816.35,Active
+155,Personal Loan,2020-08-01,13578.29,Active
+156,Mortgage,2020-08-26,4865.67,Active
+156,Credit Card,2020-07-20,0.0,Active
+157,Credit Card,2020-09-09,0.0,Active
+158,Mortgage,2020-01-28,17667.14,Active
+158,Investment,2020-02-04,20504.85,Active
+158,Credit Card,2020-11-16,0.0,Active
+159,Checking,2020-11-20,68294.09,Active
+159,Personal Loan,2020-04-14,23113.94,Active
+160,Personal Loan,2020-06-10,7982.69,Active
+160,Checking,2020-07-09,10676.64,Active
+160,Investment,2020-08-12,20791.81,Active
+161,Personal Loan,2020-03-02,34032.74,Active
+161,Savings,2020-06-02,16228.59,Active
+161,Checking,2020-02-05,7678.38,Active
+162,Investment,2020-12-03,33786.43,Active
+162,Credit Card,2020-01-10,0.0,Active
+162,Mortgage,2020-04-15,17669.28,Active
+163,Credit Card,2020-05-17,0.0,Active
+164,Personal Loan,2020-02-02,7486.1,Active
+164,Credit Card,2020-12-19,0.0,Active
+164,Investment,2020-08-18,12841.13,Active
+165,Checking,2020-01-28,53901.34,Active
+166,Personal Loan,2020-05-18,5199.48,Active
+166,Checking,2020-11-12,86654.58,Active
+166,Mortgage,2020-05-02,39269.05,Active
+167,Mortgage,2020-07-15,37205.07,Active
+168,Mortgage,2020-10-19,23232.83,Active
+168,Checking,2020-10-07,11278.09,Active
+169,Credit Card,2020-03-14,0.0,Active
+169,Personal Loan,2020-12-15,9636.59,Active
+169,Investment,2020-12-15,47576.94,Active
+170,Credit Card,2020-11-01,0.0,Active
+170,Personal Loan,2020-01-15,51138.73,Active
+171,Savings,2020-05-18,22543.36,Active
+171,Personal Loan,2020-04-26,42878.53,Active
+172,Personal Loan,2020-07-19,4259.3,Active
+172,Credit Card,2020-04-24,0.0,Active
+173,Credit Card,2020-11-29,0.0,Active
+173,Personal Loan,2020-07-14,24412.7,Active
+173,Investment,2020-08-28,25574.27,Active
+174,Personal Loan,2020-04-13,5320.12,Active
+174,Savings,2020-02-25,90636.71,Active
+175,Personal Loan,2020-06-17,41953.56,Active
+175,Mortgage,2020-08-04,8985.93,Active
+176,Personal Loan,2020-06-17,27120.77,Active
+176,Credit Card,2020-06-30,0.0,Active
+177,Investment,2020-04-05,10687.91,Active
+177,Personal Loan,2020-06-16,70165.38,Active
+178,Personal Loan,2020-06-11,24749.54,Active
+178,Checking,2020-11-26,55602.04,Active
+178,Investment,2020-09-30,20109.03,Active
+179,Credit Card,2020-11-09,0.0,Active
+179,Mortgage,2020-04-13,5132.35,Active
+179,Investment,2020-01-19,14449.37,Active
+180,Savings,2020-08-15,33475.63,Active
+180,Checking,2020-07-08,31556.53,Active
+180,Investment,2020-12-15,31002.56,Active
+181,Personal Loan,2020-07-21,20742.97,Active
+181,Checking,2020-05-15,31728.23,Active
+181,Investment,2020-12-23,165334.54,Active
+182,Checking,2020-12-05,25215.32,Active
+182,Savings,2020-03-13,61917.86,Active
+182,Credit Card,2020-01-04,0.0,Active
+183,Credit Card,2020-02-08,0.0,Active
+184,Checking,2020-01-28,21758.78,Active
+184,Investment,2020-07-23,107724.0,Active
+185,Credit Card,2020-03-24,0.0,Active
+185,Mortgage,2020-05-22,100252.25,Active
+186,Mortgage,2020-04-21,32264.87,Active
+186,Savings,2020-05-23,18585.7,Active
+187,Savings,2020-02-28,113180.59,Active
+187,Credit Card,2020-06-25,0.0,Active
+187,Checking,2020-03-03,26057.14,Active
+188,Personal Loan,2020-09-11,2106.29,Active
+188,Checking,2020-04-01,89969.86,Active
+189,Savings,2020-09-05,6577.5,Active
+189,Credit Card,2020-09-02,0.0,Active
+189,Personal Loan,2020-03-15,14733.96,Active
+190,Personal Loan,2020-02-02,7294.91,Active
+190,Investment,2020-11-23,5694.05,Active
+191,Mortgage,2020-04-25,7020.94,Active
+192,Personal Loan,2020-10-18,133152.59,Active
+193,Personal Loan,2020-08-06,51994.58,Active
+193,Investment,2020-02-26,34256.4,Active
+193,Mortgage,2020-03-11,14507.11,Active
+194,Checking,2020-12-22,29710.39,Active
+194,Personal Loan,2020-05-10,11177.27,Active
+194,Mortgage,2020-11-24,11835.54,Active
+195,Checking,2020-11-02,52177.27,Active
+195,Personal Loan,2020-11-15,30675.49,Active
+196,Investment,2020-11-06,111100.72,Active
+197,Personal Loan,2020-08-30,6422.54,Active
+198,Personal Loan,2020-07-08,57094.44,Active
+198,Checking,2020-04-03,120365.76,Active
+199,Personal Loan,2020-07-19,2176.65,Active
+200,Mortgage,2020-09-13,18817.27,Active
+200,Personal Loan,2020-11-20,7370.45,Active
+201,Checking,2020-04-27,59567.41,Active
+202,Credit Card,2020-07-25,0.0,Active
+202,Investment,2020-12-11,20060.42,Active
+203,Checking,2020-12-04,5470.86,Active
+203,Savings,2020-03-14,12030.68,Active
+203,Credit Card,2020-12-20,0.0,Active
+204,Investment,2020-12-27,18496.39,Active
+204,Personal Loan,2020-07-10,22590.63,Active
+204,Checking,2020-06-08,8141.35,Active
+205,Investment,2020-01-11,2159.9,Active
+205,Checking,2020-07-05,21865.06,Active
+206,Investment,2020-09-10,26955.22,Active
+207,Credit Card,2020-11-25,0.0,Active
+208,Personal Loan,2020-09-09,111280.94,Active
+208,Credit Card,2020-04-28,0.0,Active
+209,Mortgage,2020-04-10,11870.68,Active
+209,Personal Loan,2020-02-25,7299.09,Active
+209,Savings,2020-08-18,6596.75,Active
+210,Checking,2020-11-12,98884.13,Active
+210,Savings,2020-08-05,21100.29,Active
+211,Mortgage,2020-12-28,30307.99,Active
+211,Credit Card,2020-03-12,0.0,Active
+212,Investment,2020-09-21,26787.01,Active
+212,Mortgage,2020-10-13,9789.9,Active
+213,Mortgage,2020-10-16,31787.04,Active
+213,Checking,2020-06-11,51157.16,Active
+213,Personal Loan,2020-12-30,28900.64,Active
+214,Investment,2020-08-10,50474.37,Active
+215,Mortgage,2020-08-31,12482.85,Active
+215,Savings,2020-03-13,108994.7,Active
+215,Checking,2020-01-26,38684.66,Active
+216,Checking,2020-05-02,8496.79,Active
+216,Savings,2020-03-18,30378.73,Active
+217,Checking,2020-05-28,14899.41,Active
+217,Savings,2020-01-26,28060.92,Active
+218,Credit Card,2020-09-29,0.0,Active
+219,Personal Loan,2020-11-18,3903.92,Active
+220,Investment,2020-03-29,83607.27,Active
+221,Checking,2020-07-14,31562.94,Active
+221,Mortgage,2020-01-08,13377.99,Active
+222,Savings,2020-12-24,8047.14,Active
+222,Personal Loan,2020-06-17,23105.49,Active
+223,Checking,2020-07-29,77276.55,Active
+223,Savings,2020-01-23,13390.86,Active
+223,Mortgage,2020-02-17,16790.44,Active
+224,Checking,2020-02-16,26710.39,Active
+225,Mortgage,2020-12-07,40984.0,Active
+226,Credit Card,2020-07-26,0.0,Active
+226,Investment,2020-12-14,14413.64,Active
+227,Investment,2020-06-04,231369.63,Active
+227,Personal Loan,2020-09-26,12682.22,Active
+227,Credit Card,2020-08-04,0.0,Active
+228,Investment,2020-08-09,51882.53,Active
+228,Savings,2020-10-08,32795.55,Active
+228,Credit Card,2020-03-05,0.0,Active
+229,Investment,2020-03-14,5142.07,Active
+230,Personal Loan,2020-03-10,11833.04,Active
+230,Credit Card,2020-04-27,0.0,Active
+230,Mortgage,2020-07-16,15992.89,Active
+231,Savings,2020-02-17,1988.09,Active
+231,Credit Card,2020-07-20,0.0,Active
+231,Mortgage,2020-12-02,12405.78,Active
+232,Credit Card,2020-02-28,0.0,Active
+233,Mortgage,2020-02-17,16628.52,Active
+234,Credit Card,2020-10-07,0.0,Active
+235,Investment,2020-11-11,28846.12,Active
+236,Investment,2020-02-18,20184.51,Active
+237,Mortgage,2020-06-26,18143.83,Active
+237,Investment,2020-12-01,6889.31,Active
+238,Savings,2020-04-03,15433.84,Active
+238,Credit Card,2020-07-19,0.0,Active
+238,Checking,2020-08-01,10361.89,Active
+239,Checking,2020-04-03,39736.18,Active
+240,Investment,2020-02-01,47169.27,Active
+241,Checking,2020-02-15,79982.51,Active
+242,Mortgage,2020-12-26,22822.96,Active
+242,Personal Loan,2020-04-26,29657.25,Active
+242,Checking,2020-02-06,25323.75,Active
+243,Investment,2020-08-15,8426.28,Active
+243,Checking,2020-06-02,37435.29,Active
+244,Personal Loan,2020-11-17,2199.07,Active
+244,Investment,2020-05-16,15351.84,Active
+245,Savings,2020-04-15,10086.88,Active
+246,Mortgage,2020-07-13,28563.45,Active
+246,Checking,2020-06-06,104629.79,Active
+247,Savings,2020-03-01,4001.26,Active
+248,Mortgage,2020-10-15,81011.36,Active
+248,Savings,2020-10-13,9054.7,Active
+248,Credit Card,2020-06-24,0.0,Active
+249,Investment,2020-10-01,7188.4,Active
+249,Checking,2020-12-02,64164.41,Active
+250,Savings,2020-09-15,5132.83,Active
+250,Checking,2020-11-06,142321.6,Active
+250,Personal Loan,2020-02-14,45297.04,Active
+251,Investment,2020-04-22,12769.49,Active
+252,Credit Card,2020-02-20,0.0,Active
+252,Personal Loan,2020-06-29,10008.11,Active
+253,Savings,2020-05-08,16961.48,Active
+253,Investment,2020-10-17,16679.31,Active
+253,Credit Card,2020-02-28,0.0,Active
+254,Checking,2020-03-29,6073.99,Active
+255,Personal Loan,2020-08-28,31582.82,Active
+256,Mortgage,2020-10-03,8860.47,Active
+256,Checking,2020-08-16,24254.79,Active
+257,Mortgage,2020-01-29,7977.43,Active
+258,Investment,2020-05-26,13940.5,Active
+258,Checking,2020-02-13,24596.85,Active
+258,Personal Loan,2020-05-23,64221.83,Active
+259,Checking,2020-07-16,26024.18,Active
+259,Personal Loan,2020-06-07,22869.1,Active
+259,Mortgage,2020-02-15,65631.13,Active
+260,Credit Card,2020-03-17,0.0,Active
+261,Personal Loan,2020-03-27,8334.53,Active
+261,Savings,2020-09-04,51029.9,Active
+261,Investment,2020-03-09,9009.71,Active
+262,Credit Card,2020-05-04,0.0,Active
+262,Checking,2020-05-11,37207.55,Active
+263,Credit Card,2020-05-01,0.0,Active
+263,Checking,2020-10-08,7126.24,Active
+264,Checking,2020-09-04,50569.43,Active
+264,Credit Card,2020-08-05,0.0,Active
+265,Credit Card,2020-11-24,0.0,Active
+265,Investment,2020-05-10,72035.28,Active
+265,Savings,2020-04-15,8606.75,Active
+266,Mortgage,2020-08-29,177725.18,Active
+266,Savings,2020-07-17,44699.38,Active
+266,Personal Loan,2020-04-21,22050.93,Active
+267,Investment,2020-09-14,4701.17,Active
+268,Credit Card,2020-08-08,0.0,Active
+268,Investment,2020-11-21,4557.8,Active
+268,Savings,2020-07-14,17203.74,Active
+269,Savings,2020-06-02,70799.98,Active
+269,Checking,2020-08-10,22068.52,Active
+270,Checking,2020-01-04,86515.54,Active
+271,Checking,2020-01-31,24981.76,Active
+271,Savings,2020-09-24,59904.74,Active
+272,Credit Card,2020-04-25,0.0,Active
+273,Personal Loan,2020-12-13,13687.85,Active
+273,Credit Card,2020-05-04,0.0,Active
+274,Checking,2020-10-04,161356.33,Active
+274,Investment,2020-01-08,32627.59,Active
+274,Personal Loan,2020-07-26,25990.58,Active
+275,Checking,2020-03-20,126266.97,Active
+276,Mortgage,2020-05-15,56315.42,Active
+276,Investment,2020-12-03,6482.5,Active
+277,Mortgage,2020-08-18,35170.06,Active
+277,Personal Loan,2020-02-07,6834.37,Active
+278,Mortgage,2020-12-10,19971.21,Active
+279,Checking,2020-09-25,75370.45,Active
+280,Checking,2020-08-01,48568.04,Active
+281,Investment,2020-04-09,29899.53,Active
+282,Mortgage,2020-05-21,56674.14,Active
+283,Investment,2020-03-26,25254.25,Active
+284,Credit Card,2020-09-14,0.0,Active
+285,Mortgage,2020-05-15,50022.71,Active
+285,Savings,2020-09-16,49876.55,Active
+286,Mortgage,2020-01-07,46329.67,Active
+287,Mortgage,2020-07-26,36026.39,Active
+288,Investment,2020-11-28,30983.68,Active
+289,Savings,2020-12-18,98742.88,Active
+289,Personal Loan,2020-06-05,7930.59,Active
+290,Savings,2020-07-13,8836.77,Active
+290,Checking,2020-12-14,3737.98,Active
+290,Investment,2020-11-11,21896.96,Active
+291,Mortgage,2020-05-26,27135.51,Active
+291,Credit Card,2020-08-22,0.0,Active
+292,Credit Card,2020-03-17,0.0,Active
+292,Personal Loan,2020-06-09,58005.32,Active
+292,Savings,2020-01-05,46111.76,Active
+293,Savings,2020-07-29,79247.59,Active
+293,Checking,2020-04-04,6021.95,Active
+294,Savings,2020-08-05,11416.2,Active
+294,Personal Loan,2020-12-30,13350.69,Active
+295,Personal Loan,2020-07-01,25774.78,Active
+295,Credit Card,2020-03-15,0.0,Active
+295,Mortgage,2020-07-27,23674.49,Active
+296,Investment,2020-12-01,46084.74,Active
+296,Checking,2020-04-04,44633.1,Active
+297,Savings,2020-04-21,27666.88,Active
+297,Personal Loan,2020-10-26,36679.63,Active
+297,Checking,2020-04-29,10653.47,Active
+298,Credit Card,2020-07-07,0.0,Active
+298,Mortgage,2020-03-06,82195.49,Active
+298,Investment,2020-09-11,17563.59,Active
+299,Mortgage,2020-12-10,34970.58,Active
+299,Credit Card,2020-09-25,0.0,Active
+300,Checking,2020-01-17,6421.61,Active
+300,Personal Loan,2020-10-14,36938.77,Active
+300,Investment,2020-09-25,34109.25,Active
+301,Mortgage,2020-02-17,44469.15,Active
+301,Credit Card,2020-06-11,0.0,Active
+301,Savings,2020-06-21,84344.94,Active
+302,Credit Card,2020-11-11,0.0,Active
+303,Investment,2020-09-09,8386.65,Active
+303,Savings,2020-02-02,108992.53,Active
+303,Mortgage,2020-09-16,42477.96,Active
+304,Personal Loan,2020-11-08,25764.67,Active
+305,Investment,2020-08-21,10749.43,Active
+305,Checking,2020-12-22,15606.04,Active
+305,Credit Card,2020-06-07,0.0,Active
+306,Savings,2020-08-18,5001.96,Active
+306,Personal Loan,2020-12-22,15124.39,Active
+307,Investment,2020-08-22,3167.17,Active
+307,Personal Loan,2020-08-13,53637.84,Active
+307,Credit Card,2020-06-15,0.0,Active
+308,Savings,2020-02-04,16981.8,Active
+308,Mortgage,2020-11-19,5997.85,Active
+308,Personal Loan,2020-01-25,8226.55,Active
+309,Checking,2020-08-16,17166.48,Active
+309,Savings,2020-03-26,8682.93,Active
+309,Personal Loan,2020-07-24,101460.96,Active
+310,Mortgage,2020-02-12,82094.96,Active
+311,Mortgage,2020-06-17,19056.42,Active
+311,Investment,2020-10-24,58769.84,Active
+311,Savings,2020-10-22,43019.82,Active
+312,Savings,2020-07-01,13220.95,Active
+312,Personal Loan,2020-04-16,15106.53,Active
+312,Mortgage,2020-08-10,5037.11,Active
+313,Investment,2020-05-14,61237.36,Active
+313,Savings,2020-04-23,217926.09,Active
+314,Investment,2020-01-26,142551.98,Active
+314,Credit Card,2020-01-17,0.0,Active
+315,Checking,2020-05-25,9012.84,Active
+315,Savings,2020-08-28,4266.8,Active
+315,Personal Loan,2020-09-03,27104.98,Active
+316,Credit Card,2020-01-21,0.0,Active
+316,Personal Loan,2020-11-03,14412.31,Active
+316,Savings,2020-06-11,5292.16,Active
+317,Checking,2020-03-28,32658.92,Active
+317,Personal Loan,2020-12-01,13953.74,Active
+317,Credit Card,2020-10-29,0.0,Active
+318,Checking,2020-05-14,79573.55,Active
+318,Savings,2020-01-01,86420.02,Active
+318,Mortgage,2020-01-26,38333.98,Active
+319,Personal Loan,2020-11-22,9388.47,Active
+319,Mortgage,2020-02-20,38654.7,Active
+319,Checking,2020-03-21,42572.09,Active
+320,Personal Loan,2020-07-15,14096.3,Active
+320,Credit Card,2020-04-18,0.0,Active
+320,Checking,2020-03-19,12460.28,Active
+321,Credit Card,2020-10-06,0.0,Active
+321,Mortgage,2020-05-30,15400.76,Active
+321,Checking,2020-08-27,47048.97,Active
+322,Credit Card,2020-06-20,0.0,Active
+323,Mortgage,2020-05-26,28758.82,Active
+323,Investment,2020-06-02,12083.72,Active
+324,Savings,2020-06-19,25327.69,Active
+324,Investment,2020-09-06,35571.33,Active
+324,Mortgage,2020-01-24,94813.51,Active
+325,Checking,2020-06-06,41943.43,Active
+325,Credit Card,2020-10-19,0.0,Active
+325,Savings,2020-08-09,25690.87,Active
+326,Mortgage,2020-09-19,49542.09,Active
+326,Savings,2020-05-06,54214.72,Active
+326,Checking,2020-07-15,42841.88,Active
+327,Mortgage,2020-09-20,7934.19,Active
+327,Checking,2020-10-11,33257.79,Active
+328,Investment,2020-07-12,9892.57,Active
+329,Checking,2020-07-30,8990.92,Active
+329,Savings,2020-05-18,64444.35,Active
+330,Investment,2020-10-30,14630.65,Active
+331,Personal Loan,2020-05-07,25861.61,Active
+331,Checking,2020-07-18,225189.81,Active
+332,Credit Card,2020-05-10,0.0,Active
+332,Savings,2020-05-27,12978.55,Active
+333,Personal Loan,2020-06-10,13136.54,Active
+333,Checking,2020-03-11,40906.04,Active
+334,Savings,2020-09-05,26311.94,Active
+334,Investment,2020-03-22,17396.85,Active
+335,Investment,2020-07-10,28991.08,Active
+335,Savings,2020-08-16,14078.2,Active
+335,Mortgage,2020-10-29,17730.06,Active
+336,Checking,2020-02-01,3838.44,Active
+336,Mortgage,2020-11-14,58300.5,Active
+336,Investment,2020-01-01,41105.45,Active
+337,Credit Card,2020-10-21,0.0,Active
+337,Checking,2020-10-05,18414.06,Active
+337,Investment,2020-06-23,7974.72,Active
+338,Credit Card,2020-09-19,0.0,Active
+338,Checking,2020-02-18,13202.98,Active
+338,Savings,2020-12-08,38712.48,Active
+339,Mortgage,2020-05-04,6499.55,Active
+339,Personal Loan,2020-07-04,8542.62,Active
+340,Personal Loan,2020-07-03,9692.63,Active
+340,Savings,2020-09-21,14374.28,Active
+341,Checking,2020-04-04,14372.82,Active
+341,Investment,2020-09-02,38306.79,Active
+342,Credit Card,2020-11-26,0.0,Active
+342,Personal Loan,2020-12-09,17044.75,Active
+343,Savings,2020-12-10,5784.43,Active
+344,Investment,2020-11-08,120760.69,Active
+344,Savings,2020-09-01,21240.9,Active
+344,Checking,2020-11-01,3159.41,Active
+345,Investment,2020-01-19,21942.83,Active
+345,Credit Card,2020-03-06,0.0,Active
+345,Mortgage,2020-06-15,55473.98,Active
+346,Investment,2020-05-18,12975.23,Active
+346,Mortgage,2020-02-08,6057.53,Active
+347,Mortgage,2020-04-09,55437.59,Active
+347,Personal Loan,2020-11-02,322757.43,Active
+348,Credit Card,2020-11-19,0.0,Active
+348,Savings,2020-09-09,49373.52,Active
+349,Personal Loan,2020-08-21,13996.07,Active
+350,Credit Card,2020-07-05,0.0,Active
+350,Personal Loan,2020-11-14,20029.08,Active
+351,Mortgage,2020-05-11,12700.71,Active
+351,Personal Loan,2020-11-25,36669.08,Active
+351,Checking,2020-02-03,5340.44,Active
+352,Mortgage,2020-10-23,4153.29,Active
+352,Personal Loan,2020-03-21,5006.13,Active
+352,Savings,2020-07-01,5770.59,Active
+353,Checking,2020-03-08,7157.91,Active
+353,Mortgage,2020-11-06,38683.9,Active
+353,Investment,2020-04-28,5522.9,Active
+354,Checking,2020-07-01,54270.1,Active
+355,Investment,2020-11-07,22303.64,Active
+356,Credit Card,2020-11-11,0.0,Active
+357,Mortgage,2020-08-05,28589.81,Active
+357,Credit Card,2020-08-28,0.0,Active
+358,Savings,2020-02-04,90145.33,Active
+358,Checking,2020-01-01,13528.74,Active
+359,Personal Loan,2020-07-30,29382.65,Active
+359,Mortgage,2020-10-30,36146.72,Active
+359,Investment,2020-07-30,30266.46,Active
+360,Credit Card,2020-02-03,0.0,Active
+360,Personal Loan,2020-09-19,11344.3,Active
+360,Savings,2020-12-30,16575.98,Active
+361,Investment,2020-03-26,46789.04,Active
+361,Personal Loan,2020-09-07,5253.64,Active
+361,Mortgage,2020-05-28,24867.76,Active
+362,Mortgage,2020-10-14,31712.12,Active
+362,Credit Card,2020-03-26,0.0,Active
+362,Checking,2020-09-30,17681.1,Active
+363,Credit Card,2020-11-13,0.0,Active
+363,Personal Loan,2020-02-23,7617.01,Active
+363,Mortgage,2020-10-19,89074.05,Active
+364,Savings,2020-08-09,63919.28,Active
+365,Credit Card,2020-02-28,0.0,Active
+366,Savings,2020-06-15,17016.77,Active
+366,Checking,2020-12-22,103906.35,Active
+367,Mortgage,2020-04-02,53225.16,Active
+367,Personal Loan,2020-11-24,8007.11,Active
+368,Credit Card,2020-09-21,0.0,Active
+368,Checking,2020-05-14,34503.58,Active
+368,Mortgage,2020-05-23,51136.22,Active
+369,Personal Loan,2020-10-24,40335.04,Active
+369,Checking,2020-01-13,19462.27,Active
+369,Savings,2020-01-20,55889.89,Active
+370,Checking,2020-09-09,30953.99,Active
+370,Credit Card,2020-06-16,0.0,Active
+371,Investment,2020-04-15,31152.12,Active
+371,Credit Card,2020-05-16,0.0,Active
+372,Credit Card,2020-05-29,0.0,Active
+372,Checking,2020-10-20,36304.1,Active
+373,Mortgage,2020-11-18,77641.41,Active
+373,Credit Card,2020-05-01,0.0,Active
+373,Investment,2020-09-08,46138.8,Active
+374,Savings,2020-10-06,14681.03,Active
+374,Personal Loan,2020-03-12,132477.35,Active
+374,Investment,2020-12-04,31857.62,Active
+375,Checking,2020-03-02,16689.75,Active
+376,Mortgage,2020-09-16,6274.2,Active
+377,Credit Card,2020-04-16,0.0,Active
+377,Investment,2020-10-30,6033.14,Active
+377,Mortgage,2020-09-03,27456.76,Active
+378,Personal Loan,2020-04-17,37063.22,Active
+378,Checking,2020-04-25,20502.44,Active
+379,Credit Card,2020-08-22,0.0,Active
+380,Mortgage,2020-09-05,16516.15,Active
+381,Savings,2020-06-14,28142.57,Active
+381,Credit Card,2020-12-13,0.0,Active
+382,Investment,2020-10-12,49564.29,Active
+383,Mortgage,2020-08-14,217632.91,Active
+383,Savings,2020-03-12,6125.9,Active
+384,Investment,2020-01-22,6917.02,Active
+384,Personal Loan,2020-06-20,7678.49,Active
+384,Credit Card,2020-12-29,0.0,Active
+385,Mortgage,2020-08-15,61477.06,Active
+385,Savings,2020-09-21,24907.4,Active
+385,Credit Card,2020-06-16,0.0,Active
+386,Mortgage,2020-02-14,11056.34,Active
+386,Credit Card,2020-01-14,0.0,Active
+386,Checking,2020-08-18,28777.43,Active
+387,Mortgage,2020-07-14,28379.29,Active
+388,Savings,2020-03-30,100179.07,Active
+388,Checking,2020-05-10,33212.27,Active
+388,Personal Loan,2020-08-11,4591.01,Active
+389,Mortgage,2020-01-05,34794.45,Active
+389,Savings,2020-03-17,10297.29,Active
+390,Investment,2020-02-01,14859.41,Active
+390,Checking,2020-01-28,16084.08,Active
+390,Mortgage,2020-05-07,4466.82,Active
+391,Savings,2020-10-09,40017.52,Active
+391,Checking,2020-10-07,7069.54,Active
+391,Investment,2020-08-21,38288.51,Active
+392,Credit Card,2020-07-25,0.0,Active
+392,Investment,2020-12-09,8633.52,Active
+393,Checking,2020-11-09,35117.18,Active
+394,Personal Loan,2020-07-05,19525.8,Active
+395,Checking,2020-06-23,10721.54,Active
+396,Savings,2020-12-18,8742.38,Active
+397,Mortgage,2020-01-09,3822.13,Active
+397,Credit Card,2020-12-12,0.0,Active
+398,Personal Loan,2020-06-12,10216.73,Active
+399,Credit Card,2020-09-13,0.0,Active
+400,Checking,2020-09-15,3806.87,Active
+400,Personal Loan,2020-09-02,10991.2,Active
+401,Mortgage,2020-02-29,17364.67,Active
+402,Savings,2020-02-08,35116.67,Active
+403,Credit Card,2020-04-08,0.0,Active
+404,Mortgage,2020-02-06,74344.11,Active
+404,Savings,2020-01-08,2013.02,Active
+404,Checking,2020-01-04,107203.12,Active
+405,Checking,2020-10-19,5398.74,Active
+406,Investment,2020-02-22,62843.32,Active
+407,Savings,2020-02-07,20311.3,Active
+408,Checking,2020-12-28,7747.8,Active
+408,Investment,2020-01-14,131127.13,Active
+408,Credit Card,2020-10-24,0.0,Active
+409,Personal Loan,2020-04-14,49597.99,Active
+409,Savings,2020-12-28,30696.95,Active
+409,Investment,2020-02-12,50234.22,Active
+410,Mortgage,2020-12-01,23925.5,Active
+411,Savings,2020-07-13,72238.22,Active
+412,Credit Card,2020-05-10,0.0,Active
+413,Checking,2020-10-16,6147.43,Active
+414,Checking,2020-07-29,34265.64,Active
+415,Checking,2020-06-13,11357.13,Active
+415,Mortgage,2020-07-11,29444.45,Active
+415,Personal Loan,2020-10-08,2557.34,Active
+416,Credit Card,2020-04-14,0.0,Active
+417,Personal Loan,2020-11-04,121716.74,Active
+418,Investment,2020-09-27,3552.7,Active
+418,Savings,2020-06-22,22262.0,Active
+418,Credit Card,2020-05-25,0.0,Active
+419,Credit Card,2020-10-01,0.0,Active
+419,Personal Loan,2020-09-02,5790.63,Active
+420,Mortgage,2020-08-24,53640.4,Active
+420,Credit Card,2020-07-13,0.0,Active
+420,Personal Loan,2020-12-04,12000.92,Active
+421,Mortgage,2020-10-06,4271.69,Active
+421,Savings,2020-01-13,12735.96,Active
+422,Credit Card,2020-07-17,0.0,Active
+423,Investment,2020-02-13,5302.2,Active
+424,Credit Card,2020-05-23,0.0,Active
+424,Investment,2020-09-22,13955.05,Active
+425,Mortgage,2020-07-05,35632.24,Active
+426,Savings,2020-06-23,7887.34,Active
+426,Investment,2020-01-04,13201.55,Active
+427,Investment,2020-05-26,23166.28,Active
+427,Personal Loan,2020-03-27,32401.83,Active
+427,Savings,2020-11-01,6791.01,Active
+428,Personal Loan,2020-10-26,7178.39,Active
+428,Savings,2020-08-20,2134.48,Active
+428,Checking,2020-09-22,77237.19,Active
+429,Checking,2020-07-10,38656.88,Active
+430,Investment,2020-12-29,58352.78,Active
+430,Checking,2020-04-26,6313.49,Active
+430,Savings,2020-08-14,152262.27,Active
+431,Credit Card,2020-10-13,0.0,Active
+432,Checking,2020-08-31,28474.12,Active
+433,Personal Loan,2020-03-14,16304.14,Active
+433,Checking,2020-11-23,4327.25,Active
+434,Investment,2020-01-08,4071.01,Active
+435,Mortgage,2020-11-15,12244.4,Active
+435,Investment,2020-11-03,19559.23,Active
+435,Credit Card,2020-09-05,0.0,Active
+436,Personal Loan,2020-11-29,109798.35,Active
+436,Investment,2020-10-10,10719.16,Active
+436,Savings,2020-10-30,7146.26,Active
+437,Mortgage,2020-08-22,39031.56,Active
+437,Savings,2020-03-17,39971.87,Active
+437,Credit Card,2020-03-25,0.0,Active
+438,Checking,2020-02-28,2670.88,Active
+438,Mortgage,2020-01-06,84063.4,Active
+439,Mortgage,2020-09-26,8943.03,Active
+440,Checking,2020-10-05,14666.65,Active
+440,Mortgage,2020-04-26,19630.29,Active
+441,Credit Card,2020-12-23,0.0,Active
+441,Personal Loan,2020-09-06,19149.2,Active
+441,Savings,2020-08-11,5561.02,Active
+442,Credit Card,2020-08-08,0.0,Active
+442,Personal Loan,2020-07-29,7187.4,Active
+443,Savings,2020-03-28,8760.82,Active
+443,Credit Card,2020-10-22,0.0,Active
+444,Checking,2020-03-18,10778.06,Active
+444,Savings,2020-03-18,4982.66,Active
+445,Personal Loan,2020-08-01,52528.82,Active
+446,Savings,2020-02-14,74508.07,Active
+446,Investment,2020-11-04,24885.96,Active
+447,Savings,2020-12-30,22113.89,Active
+447,Investment,2020-04-13,12192.25,Active
+447,Personal Loan,2020-09-01,24263.88,Active
+448,Personal Loan,2020-04-09,12168.18,Active
+448,Credit Card,2020-01-05,0.0,Active
+449,Credit Card,2020-05-28,0.0,Active
+449,Mortgage,2020-09-22,20776.34,Active
+449,Savings,2020-07-01,50332.35,Active
+450,Personal Loan,2020-04-28,139080.41,Active
+451,Personal Loan,2020-02-15,5628.83,Active
+451,Investment,2020-02-15,48068.01,Active
+452,Personal Loan,2020-11-28,37216.92,Active
+452,Checking,2020-11-27,16699.11,Active
+452,Credit Card,2020-04-04,0.0,Active
+453,Credit Card,2020-10-15,0.0,Active
+453,Mortgage,2020-04-06,11251.75,Active
+453,Checking,2020-11-30,39659.14,Active
+454,Investment,2020-11-07,57661.51,Active
+454,Checking,2020-11-15,47525.97,Active
+455,Checking,2020-07-18,12998.78,Active
+455,Investment,2020-11-29,22988.01,Active
+455,Credit Card,2020-03-16,0.0,Active
+456,Savings,2020-03-24,44092.12,Active
+457,Investment,2020-05-15,5804.21,Active
+457,Savings,2020-09-26,16074.3,Active
+458,Credit Card,2020-09-24,0.0,Active
+458,Personal Loan,2020-08-28,13010.54,Active
+459,Personal Loan,2020-09-06,30260.91,Active
+460,Investment,2020-05-20,11948.95,Active
+460,Mortgage,2020-03-03,13263.68,Active
+460,Checking,2020-10-20,109683.69,Active
+461,Personal Loan,2020-07-06,74902.04,Active
+462,Savings,2020-05-12,4316.79,Active
+463,Mortgage,2020-03-26,38419.06,Active
+464,Savings,2020-01-15,1359.12,Active
+465,Checking,2020-05-16,66051.9,Active
+465,Credit Card,2020-09-03,0.0,Active
+466,Mortgage,2020-08-08,4747.48,Active
+466,Checking,2020-12-14,104720.33,Active
+467,Credit Card,2020-05-14,0.0,Active
+468,Personal Loan,2020-10-13,38511.95,Active
+469,Checking,2020-06-27,18835.95,Active
+469,Mortgage,2020-03-04,16172.05,Active
+470,Checking,2020-06-16,2684.95,Active
+470,Credit Card,2020-06-28,0.0,Active
+470,Personal Loan,2020-02-27,50440.78,Active
+471,Personal Loan,2020-01-20,7417.28,Active
+471,Credit Card,2020-11-10,0.0,Active
+471,Investment,2020-03-09,4179.24,Active
+472,Checking,2020-09-25,40931.82,Active
+472,Mortgage,2020-07-05,89726.63,Active
+473,Savings,2020-03-27,116237.27,Active
+473,Personal Loan,2020-03-08,26245.38,Active
+473,Mortgage,2020-02-26,3191.91,Active
+474,Savings,2020-01-26,31837.03,Active
+474,Personal Loan,2020-11-12,4623.07,Active
+475,Credit Card,2020-05-29,0.0,Active
+475,Savings,2020-01-10,3508.39,Active
+476,Mortgage,2020-12-21,3955.32,Active
+477,Investment,2020-08-29,8623.97,Active
+477,Savings,2020-12-17,5611.43,Active
+478,Checking,2020-07-10,52784.47,Active
+478,Savings,2020-12-25,53734.34,Active
+479,Credit Card,2020-10-29,0.0,Active
+479,Mortgage,2020-09-21,14274.14,Active
+479,Savings,2020-06-13,42774.71,Active
+480,Savings,2020-09-24,48400.87,Active
+480,Checking,2020-05-20,55888.61,Active
+480,Investment,2020-12-08,48526.14,Active
+481,Investment,2020-04-27,42574.52,Active
+481,Credit Card,2020-01-05,0.0,Active
+481,Mortgage,2020-12-17,19590.67,Active
+482,Personal Loan,2020-04-25,14132.4,Active
+482,Savings,2020-07-06,104309.27,Active
+483,Personal Loan,2020-11-21,24652.3,Active
+483,Savings,2020-01-02,16481.71,Active
+484,Personal Loan,2020-04-21,1319.87,Active
+484,Savings,2020-11-16,61086.65,Active
+484,Credit Card,2020-10-26,0.0,Active
+485,Investment,2020-08-09,166303.86,Active
+485,Savings,2020-06-15,17430.95,Active
+485,Checking,2020-07-23,52238.31,Active
+486,Savings,2020-07-27,49676.16,Active
+486,Mortgage,2020-11-03,9472.48,Active
+486,Investment,2020-05-17,29179.76,Active
+487,Savings,2020-02-29,97694.39,Active
+487,Mortgage,2020-07-20,125450.34,Active
+488,Credit Card,2020-11-17,0.0,Active
+488,Checking,2020-08-23,23987.4,Active
+488,Mortgage,2020-06-10,21762.78,Active
+489,Investment,2020-09-17,7181.28,Active
+490,Credit Card,2020-10-01,0.0,Active
+491,Investment,2020-04-16,9101.06,Active
+491,Checking,2020-05-14,15307.32,Active
+492,Personal Loan,2020-08-16,60712.56,Active
+492,Savings,2020-11-02,205189.32,Active
+493,Checking,2020-04-27,37761.22,Active
+494,Checking,2020-11-28,8107.59,Active
+495,Personal Loan,2020-01-10,34089.09,Active
+496,Savings,2020-03-14,32899.32,Active
+496,Checking,2020-12-16,22807.09,Active
+496,Credit Card,2020-04-19,0.0,Active
+497,Mortgage,2020-01-10,64223.34,Active
+497,Savings,2020-12-20,77153.34,Active
+498,Investment,2020-07-08,121337.43,Active
+498,Savings,2020-12-20,4692.37,Active
+499,Savings,2020-09-12,9930.63,Active
+499,Checking,2020-08-06,18506.17,Active
+500,Savings,2020-04-16,122294.03,Active
+500,Checking,2020-05-13,4936.76,Active
+500,Investment,2020-06-03,70257.17,Active
+501,Credit Card,2020-02-16,0.0,Active
+502,Credit Card,2020-05-04,0.0,Active
+502,Savings,2020-04-19,28458.33,Active
+503,Checking,2020-05-03,3928.07,Active
+503,Savings,2020-01-30,6992.95,Active
+503,Investment,2020-03-23,10209.34,Active
+504,Checking,2020-09-15,8097.55,Active
+504,Investment,2020-05-07,13004.82,Active
+504,Personal Loan,2020-07-29,7706.45,Active
+505,Mortgage,2020-01-16,8330.69,Active
+505,Credit Card,2020-11-29,0.0,Active
+506,Checking,2020-11-21,22771.97,Active
+507,Credit Card,2020-02-05,0.0,Active
+508,Credit Card,2020-08-15,0.0,Active
+509,Savings,2020-10-03,58588.52,Active
+509,Mortgage,2020-11-30,68110.83,Active
+510,Investment,2020-06-07,95226.51,Active
+510,Checking,2020-05-28,22427.59,Active
+511,Credit Card,2020-09-19,0.0,Active
+512,Personal Loan,2020-10-24,73915.26,Active
+512,Savings,2020-06-28,18551.38,Active
+512,Credit Card,2020-11-14,0.0,Active
+513,Mortgage,2020-12-07,271738.14,Active
+514,Savings,2020-03-21,6868.32,Active
+514,Personal Loan,2020-02-12,4861.35,Active
+515,Checking,2020-12-17,30758.35,Active
+515,Credit Card,2020-03-10,0.0,Active
+515,Mortgage,2020-04-19,6596.27,Active
+516,Checking,2020-05-10,39044.03,Active
+516,Personal Loan,2020-06-29,32762.72,Active
+516,Savings,2020-09-02,51320.79,Active
+517,Credit Card,2020-07-05,0.0,Active
+518,Mortgage,2020-07-29,15644.17,Active
+518,Investment,2020-01-25,5956.41,Active
+519,Credit Card,2020-04-15,0.0,Active
+519,Mortgage,2020-04-05,15597.97,Active
+519,Savings,2020-06-24,57164.61,Active
+520,Investment,2020-04-19,31217.72,Active
+521,Personal Loan,2020-04-24,43120.01,Active
+521,Savings,2020-11-16,3963.49,Active
+521,Credit Card,2020-07-17,0.0,Active
+522,Personal Loan,2020-07-31,48147.64,Active
+522,Investment,2020-08-01,8851.86,Active
+523,Investment,2020-03-28,1993.22,Active
+523,Mortgage,2020-09-15,40581.87,Active
+523,Personal Loan,2020-03-31,16565.79,Active
+524,Credit Card,2020-01-20,0.0,Active
+525,Mortgage,2020-09-25,12490.68,Active
+526,Mortgage,2020-02-01,38800.44,Active
+526,Personal Loan,2020-11-11,19457.87,Active
+526,Savings,2020-02-28,58486.1,Active
+527,Personal Loan,2020-02-26,172206.8,Active
+527,Savings,2020-07-03,7925.68,Active
+528,Savings,2020-10-30,7656.35,Active
+529,Savings,2020-10-05,77620.07,Active
+529,Mortgage,2020-08-29,168981.69,Active
+530,Investment,2020-01-16,30947.1,Active
+531,Checking,2020-01-31,16411.2,Active
+531,Mortgage,2020-08-21,11692.18,Active
+532,Credit Card,2020-10-27,0.0,Active
+532,Personal Loan,2020-01-04,159400.99,Active
+533,Mortgage,2020-03-12,51709.33,Active
+534,Personal Loan,2020-06-23,4127.49,Active
+535,Credit Card,2020-06-11,0.0,Active
+535,Investment,2020-12-08,25258.23,Active
+535,Personal Loan,2020-12-21,1303.62,Active
+536,Personal Loan,2020-09-10,14450.92,Active
+536,Credit Card,2020-04-16,0.0,Active
+536,Checking,2020-10-21,883.55,Active
+537,Savings,2020-08-27,22822.41,Active
+537,Mortgage,2020-10-20,32053.67,Active
+538,Credit Card,2020-12-22,0.0,Active
+538,Mortgage,2020-10-26,126103.89,Active
+538,Investment,2020-09-11,243979.03,Active
+539,Mortgage,2020-01-10,5746.22,Active
+539,Checking,2020-04-25,51740.33,Active
+540,Savings,2020-03-31,9146.19,Active
+540,Checking,2020-03-17,5510.54,Active
+541,Credit Card,2020-02-27,0.0,Active
+541,Mortgage,2020-09-10,14085.53,Active
+542,Mortgage,2020-09-11,12522.82,Active
+542,Checking,2020-09-21,24052.0,Active
+542,Personal Loan,2020-06-12,14181.95,Active
+543,Savings,2020-07-09,5339.51,Active
+543,Credit Card,2020-04-15,0.0,Active
+543,Investment,2020-11-27,3652.41,Active
+544,Personal Loan,2020-10-12,5761.57,Active
+544,Mortgage,2020-04-15,51533.86,Active
+544,Checking,2020-05-12,31132.86,Active
+545,Credit Card,2020-08-23,0.0,Active
+546,Mortgage,2020-09-27,28552.94,Active
+546,Credit Card,2020-04-23,0.0,Active
+547,Mortgage,2020-09-28,83521.41,Active
+548,Personal Loan,2020-03-25,8748.9,Active
+548,Mortgage,2020-05-13,16996.73,Active
+548,Investment,2020-02-29,7050.08,Active
+549,Credit Card,2020-03-06,0.0,Active
+549,Investment,2020-06-16,46114.82,Active
+549,Savings,2020-12-23,8984.23,Active
+550,Mortgage,2020-04-16,17027.61,Active
+551,Personal Loan,2020-11-30,20861.56,Active
+551,Mortgage,2020-11-01,22786.9,Active
+551,Savings,2020-02-14,21315.09,Active
+552,Personal Loan,2020-12-02,7800.53,Active
+553,Credit Card,2020-04-24,0.0,Active
+553,Investment,2020-06-24,61232.66,Active
+554,Checking,2020-06-24,7443.68,Active
+555,Investment,2020-03-07,15312.7,Active
+556,Savings,2020-06-26,12194.62,Active
+557,Savings,2020-05-28,38640.75,Active
+557,Investment,2020-02-04,252421.78,Active
+558,Personal Loan,2020-01-10,50758.2,Active
+559,Mortgage,2020-09-08,11355.48,Active
+559,Savings,2020-02-05,4787.09,Active
+559,Personal Loan,2020-08-20,8605.9,Active
+560,Personal Loan,2020-04-02,28188.74,Active
+560,Checking,2020-12-04,159625.24,Active
+561,Credit Card,2020-04-17,0.0,Active
+561,Savings,2020-10-09,25870.96,Active
+561,Personal Loan,2020-03-11,2904.41,Active
+562,Investment,2020-01-13,16759.29,Active
+563,Credit Card,2020-03-30,0.0,Active
+563,Savings,2020-08-28,30086.85,Active
+563,Mortgage,2020-11-01,10279.0,Active
+564,Savings,2020-06-12,17362.7,Active
+564,Personal Loan,2020-04-25,8734.3,Active
+565,Savings,2020-02-15,6969.62,Active
+565,Personal Loan,2020-03-26,22024.86,Active
+565,Mortgage,2020-05-16,8264.52,Active
+566,Credit Card,2020-11-02,0.0,Active
+566,Mortgage,2020-02-05,140090.98,Active
+567,Personal Loan,2020-10-11,100809.23,Active
+567,Investment,2020-04-19,24381.63,Active
+567,Checking,2020-07-15,12571.73,Active
+568,Personal Loan,2020-10-01,12990.05,Active
+568,Savings,2020-01-18,23834.11,Active
+568,Checking,2020-11-24,130151.07,Active
+569,Checking,2020-09-01,53737.32,Active
+569,Savings,2020-06-30,7235.14,Active
+569,Personal Loan,2020-11-29,18116.13,Active
+570,Savings,2020-12-23,38037.65,Active
+570,Investment,2020-07-22,17337.85,Active
+571,Checking,2020-05-19,19076.73,Active
+572,Personal Loan,2020-07-01,18538.23,Active
+572,Investment,2020-04-22,3890.09,Active
+572,Mortgage,2020-04-16,9793.77,Active
+573,Investment,2020-07-27,12225.96,Active
+573,Personal Loan,2020-11-09,11830.13,Active
+573,Credit Card,2020-02-19,0.0,Active
+574,Checking,2020-05-16,20032.56,Active
+575,Mortgage,2020-06-14,9514.46,Active
+576,Investment,2020-08-04,14797.86,Active
+577,Savings,2020-05-20,22513.91,Active
+578,Investment,2020-08-02,30240.94,Active
+578,Savings,2020-03-11,8467.08,Active
+579,Credit Card,2020-09-02,0.0,Active
+579,Personal Loan,2020-09-28,223605.09,Active
+580,Savings,2020-06-20,4181.38,Active
+580,Checking,2020-02-25,6312.75,Active
+580,Personal Loan,2020-03-19,50057.26,Active
+581,Investment,2020-03-16,8852.81,Active
+581,Credit Card,2020-11-11,0.0,Active
+581,Savings,2020-11-16,122262.52,Active
+582,Savings,2020-05-06,26910.23,Active
+582,Credit Card,2020-12-30,0.0,Active
+583,Checking,2020-09-18,40409.89,Active
+583,Credit Card,2020-02-06,0.0,Active
+583,Mortgage,2020-05-21,57659.86,Active
+584,Savings,2020-01-18,41192.59,Active
+585,Personal Loan,2020-08-07,116423.62,Active
+585,Investment,2020-10-15,36705.43,Active
+586,Savings,2020-05-20,109664.75,Active
+586,Checking,2020-01-31,13058.9,Active
+587,Credit Card,2020-10-10,0.0,Active
+587,Savings,2020-03-20,36417.23,Active
+587,Personal Loan,2020-06-28,29526.73,Active
+588,Personal Loan,2020-06-12,12861.91,Active
+589,Investment,2020-07-03,29150.9,Active
+590,Savings,2020-02-25,20038.14,Active
+591,Investment,2020-03-18,16714.78,Active
+591,Mortgage,2020-01-15,15340.88,Active
+591,Personal Loan,2020-10-30,42537.57,Active
+592,Mortgage,2020-01-16,14834.58,Active
+593,Investment,2020-04-17,30632.02,Active
+593,Checking,2020-07-28,23072.94,Active
+594,Personal Loan,2020-03-20,31578.32,Active
+594,Credit Card,2020-12-02,0.0,Active
+594,Savings,2020-12-14,37847.54,Active
+595,Savings,2020-10-10,276113.62,Active
+596,Savings,2020-12-27,7430.92,Active
+596,Mortgage,2020-04-01,3378.15,Active
+597,Checking,2020-12-03,12206.63,Active
+597,Mortgage,2020-05-13,84127.12,Active
+598,Credit Card,2020-03-15,0.0,Active
+598,Mortgage,2020-07-20,10138.66,Active
+599,Investment,2020-06-13,19808.39,Active
+599,Savings,2020-06-10,74402.19,Active
+599,Mortgage,2020-09-01,106507.91,Active
+600,Investment,2020-05-26,5129.81,Active
+600,Savings,2020-06-24,19683.49,Active
+600,Checking,2020-02-16,4840.95,Active
+601,Investment,2020-01-29,34699.79,Active
+601,Mortgage,2020-11-08,10200.69,Active
+602,Credit Card,2020-01-14,0.0,Active
+603,Mortgage,2020-04-11,77273.43,Active
+603,Savings,2020-02-17,43770.23,Active
+603,Checking,2020-02-26,30793.36,Active
+604,Investment,2020-04-29,38746.24,Active
+604,Savings,2020-09-02,3054.93,Active
+605,Savings,2020-08-18,118523.84,Active
+605,Mortgage,2020-01-08,18663.61,Active
+606,Checking,2020-08-28,22722.27,Active
+606,Personal Loan,2020-11-15,40867.72,Active
+606,Mortgage,2020-10-08,25972.02,Active
+607,Personal Loan,2020-01-08,27634.47,Active
+607,Mortgage,2020-11-16,22222.08,Active
+607,Checking,2020-03-07,54683.98,Active
+608,Savings,2020-11-02,5015.84,Active
+608,Checking,2020-01-04,15970.32,Active
+608,Mortgage,2020-10-02,143526.66,Active
+609,Savings,2020-12-10,12052.34,Active
+609,Credit Card,2020-11-01,0.0,Active
+610,Savings,2020-09-25,31660.2,Active
+610,Credit Card,2020-01-20,0.0,Active
+610,Checking,2020-03-06,17113.98,Active
+611,Investment,2020-08-12,11616.84,Active
+611,Savings,2020-09-14,85138.9,Active
+611,Personal Loan,2020-01-24,179765.32,Active
+612,Investment,2020-07-26,12592.24,Active
+612,Mortgage,2020-05-03,13900.68,Active
+612,Credit Card,2020-12-29,0.0,Active
+613,Investment,2020-09-29,7533.82,Active
+614,Investment,2020-11-08,8813.49,Active
+614,Credit Card,2020-07-08,0.0,Active
+615,Checking,2020-03-07,11922.95,Active
+615,Investment,2020-05-26,195127.92,Active
+616,Personal Loan,2020-08-28,27949.97,Active
+616,Investment,2020-10-03,9501.72,Active
+617,Investment,2020-11-07,26963.8,Active
+617,Personal Loan,2020-02-25,17808.84,Active
+617,Credit Card,2020-08-17,0.0,Active
+618,Investment,2020-12-21,21200.41,Active
+619,Savings,2020-01-07,7613.06,Active
+620,Checking,2020-10-02,43391.55,Active
+620,Credit Card,2020-01-27,0.0,Active
+621,Credit Card,2020-09-27,0.0,Active
+622,Credit Card,2020-09-08,0.0,Active
+623,Checking,2020-11-03,42968.1,Active
+623,Personal Loan,2020-05-19,37952.33,Active
+624,Investment,2020-03-04,1705.68,Active
+624,Checking,2020-01-08,77324.5,Active
+624,Personal Loan,2020-08-30,1317.37,Active
+625,Credit Card,2020-01-15,0.0,Active
+626,Savings,2020-04-24,60944.27,Active
+626,Investment,2020-09-29,2101.44,Active
+627,Checking,2020-02-05,21203.05,Active
+627,Savings,2020-01-13,17321.28,Active
+627,Investment,2020-05-25,22413.51,Active
+628,Checking,2020-03-25,14527.2,Active
+628,Personal Loan,2020-06-03,11740.26,Active
+629,Savings,2020-04-21,10864.91,Active
+629,Checking,2020-08-31,40679.19,Active
+629,Investment,2020-08-18,11768.81,Active
+630,Checking,2020-10-29,26450.04,Active
+630,Savings,2020-03-17,8172.03,Active
+630,Credit Card,2020-03-02,0.0,Active
+631,Checking,2020-04-23,7879.58,Active
+631,Credit Card,2020-12-22,0.0,Active
+631,Mortgage,2020-06-21,8208.32,Active
+632,Mortgage,2020-09-07,5385.41,Active
+632,Credit Card,2020-10-02,0.0,Active
+633,Checking,2020-10-27,132243.75,Active
+634,Personal Loan,2020-10-09,5572.23,Active
+634,Credit Card,2020-10-26,0.0,Active
+634,Savings,2020-04-16,9698.94,Active
+635,Mortgage,2020-07-20,42634.58,Active
+635,Checking,2020-09-03,19008.47,Active
+635,Investment,2020-11-07,11010.34,Active
+636,Mortgage,2020-05-27,9236.43,Active
+637,Personal Loan,2020-04-03,6922.86,Active
+637,Credit Card,2020-05-12,0.0,Active
+637,Checking,2020-12-26,3038.63,Active
+638,Personal Loan,2020-01-01,32004.98,Active
+638,Investment,2020-02-27,82511.03,Active
+638,Savings,2020-11-30,112051.56,Active
+639,Credit Card,2020-01-23,0.0,Active
+640,Mortgage,2020-11-28,16505.95,Active
+640,Savings,2020-09-24,64608.92,Active
+641,Investment,2020-09-19,13500.52,Active
+641,Credit Card,2020-09-27,0.0,Active
+641,Checking,2020-08-11,11842.56,Active
+642,Credit Card,2020-10-23,0.0,Active
+642,Mortgage,2020-12-03,52077.02,Active
+643,Credit Card,2020-07-31,0.0,Active
+643,Savings,2020-02-17,24350.06,Active
+643,Personal Loan,2020-12-28,17783.82,Active
+644,Checking,2020-11-28,4371.35,Active
+644,Personal Loan,2020-03-18,31142.0,Active
+645,Savings,2020-12-11,12227.25,Active
+646,Credit Card,2020-10-12,0.0,Active
+647,Investment,2020-01-14,55420.36,Active
+647,Checking,2020-05-13,10764.94,Active
+648,Credit Card,2020-02-26,0.0,Active
+648,Mortgage,2020-06-12,56504.52,Active
+649,Credit Card,2020-03-06,0.0,Active
+650,Investment,2020-01-25,9816.42,Active
+651,Savings,2020-06-09,17174.01,Active
+651,Checking,2020-06-09,12137.37,Active
+651,Mortgage,2020-01-28,3143.95,Active
+652,Checking,2020-01-06,861.34,Active
+652,Investment,2020-10-25,29648.3,Active
+653,Personal Loan,2020-09-14,43579.35,Active
+653,Mortgage,2020-08-01,56759.43,Active
+653,Investment,2020-08-20,16746.99,Active
+654,Checking,2020-08-18,28266.55,Active
+655,Mortgage,2020-11-02,200079.28,Active
+656,Checking,2020-08-28,23852.63,Active
+657,Mortgage,2020-02-09,32946.64,Active
+657,Savings,2020-01-20,13706.81,Active
+658,Credit Card,2020-01-28,0.0,Active
+659,Personal Loan,2020-02-07,117707.09,Active
+659,Savings,2020-11-04,19187.98,Active
+660,Checking,2020-12-24,14290.67,Active
+661,Mortgage,2020-10-18,195972.69,Active
+661,Savings,2020-07-07,63329.17,Active
+662,Personal Loan,2020-04-29,48450.2,Active
+662,Savings,2020-01-25,41580.28,Active
+663,Credit Card,2020-11-05,0.0,Active
+663,Savings,2020-04-11,15359.0,Active
+664,Checking,2020-05-21,150184.47,Active
+665,Personal Loan,2020-06-23,26847.49,Active
+665,Investment,2020-10-28,15943.91,Active
+665,Mortgage,2020-11-02,28819.64,Active
+666,Mortgage,2020-10-01,2402.29,Active
+666,Personal Loan,2020-05-26,18116.26,Active
+667,Checking,2020-04-03,9333.64,Active
+668,Personal Loan,2020-10-24,27745.13,Active
+668,Credit Card,2020-02-20,0.0,Active
+669,Personal Loan,2020-11-30,117782.85,Active
+670,Investment,2020-02-26,23489.81,Active
+670,Checking,2020-02-29,47737.9,Active
+671,Mortgage,2020-03-13,56417.76,Active
+671,Credit Card,2020-11-30,0.0,Active
+672,Credit Card,2020-07-16,0.0,Active
+672,Checking,2020-06-21,29915.48,Active
+672,Mortgage,2020-05-13,139236.02,Active
+673,Investment,2020-01-30,34841.17,Active
+673,Checking,2020-01-12,95586.16,Active
+673,Savings,2020-03-31,50589.48,Active
+674,Investment,2020-01-21,48927.31,Active
+674,Credit Card,2020-05-24,0.0,Active
+674,Personal Loan,2020-05-25,8931.55,Active
+675,Investment,2020-07-19,327200.64,Active
+675,Checking,2020-11-09,38222.39,Active
+676,Checking,2020-11-13,19729.46,Active
+676,Mortgage,2020-03-27,100541.2,Active
+676,Investment,2020-01-27,36550.69,Active
+677,Investment,2020-06-26,18768.32,Active
+677,Personal Loan,2020-02-10,17267.64,Active
+678,Checking,2020-10-04,128242.09,Active
+679,Personal Loan,2020-10-28,74877.36,Active
+679,Investment,2020-02-12,25559.92,Active
+680,Credit Card,2020-02-14,0.0,Active
+681,Credit Card,2020-12-20,0.0,Active
+682,Checking,2020-07-04,18559.62,Active
+682,Investment,2020-07-19,33818.43,Active
+682,Savings,2020-08-07,47594.08,Active
+683,Savings,2020-11-23,12527.86,Active
+683,Credit Card,2020-07-11,0.0,Active
+684,Investment,2020-11-29,12176.91,Active
+685,Checking,2020-12-12,25638.71,Active
+685,Savings,2020-04-01,44114.61,Active
+686,Credit Card,2020-07-14,0.0,Active
+687,Savings,2020-09-29,24164.2,Active
+687,Personal Loan,2020-03-04,76333.15,Active
+688,Credit Card,2020-08-31,0.0,Active
+688,Checking,2020-12-13,33722.88,Active
+689,Checking,2020-11-01,26658.22,Active
+689,Personal Loan,2020-08-08,4064.05,Active
+689,Investment,2020-01-28,19857.98,Active
+690,Personal Loan,2020-06-26,21131.57,Active
+690,Investment,2020-06-15,26542.64,Active
+691,Personal Loan,2020-06-28,26079.95,Active
+691,Mortgage,2020-01-24,5902.33,Active
+691,Investment,2020-01-26,46900.9,Active
+692,Mortgage,2020-04-21,37205.3,Active
+692,Credit Card,2020-07-23,0.0,Active
+693,Credit Card,2020-03-26,0.0,Active
+693,Personal Loan,2020-01-23,4182.74,Active
+693,Investment,2020-12-14,16972.18,Active
+694,Savings,2020-12-04,39029.97,Active
+695,Checking,2020-12-24,125518.88,Active
+695,Mortgage,2020-12-07,5768.95,Active
+695,Credit Card,2020-05-25,0.0,Active
+696,Credit Card,2020-01-14,0.0,Active
+696,Savings,2020-10-30,12717.44,Active
+697,Savings,2020-08-04,18422.96,Active
+697,Checking,2020-05-26,12177.4,Active
+697,Credit Card,2020-12-24,0.0,Active
+698,Investment,2020-12-12,12295.71,Active
+698,Mortgage,2020-12-10,32869.14,Active
+699,Checking,2020-10-14,19150.75,Active
+699,Investment,2020-04-15,31824.95,Active
+700,Savings,2020-10-16,36943.15,Active
+701,Investment,2020-12-19,10429.54,Active
+702,Investment,2020-09-25,20421.2,Active
+702,Personal Loan,2020-01-17,102493.16,Active
+702,Mortgage,2020-06-13,106135.25,Active
+703,Savings,2020-10-26,4923.9,Active
+704,Mortgage,2020-07-20,160124.05,Active
+704,Credit Card,2020-10-12,0.0,Active
+704,Checking,2020-10-08,46965.89,Active
+705,Checking,2020-12-25,9170.37,Active
+706,Credit Card,2020-06-02,0.0,Active
+706,Checking,2020-05-09,51420.95,Active
+706,Mortgage,2020-02-28,22016.57,Active
+707,Savings,2020-09-18,23216.8,Active
+708,Personal Loan,2020-04-04,18200.74,Active
+708,Credit Card,2020-01-09,0.0,Active
+708,Checking,2020-07-21,3088.07,Active
+709,Credit Card,2020-03-24,0.0,Active
+710,Mortgage,2020-11-24,61921.9,Active
+710,Credit Card,2020-07-21,0.0,Active
+710,Savings,2020-05-08,13077.7,Active
+711,Investment,2020-04-12,7410.77,Active
+712,Savings,2020-12-01,129107.72,Active
+712,Investment,2020-11-18,122339.37,Active
+712,Mortgage,2020-10-07,68821.49,Active
+713,Mortgage,2020-04-05,30701.95,Active
+713,Savings,2020-07-10,42029.61,Active
+713,Personal Loan,2020-10-02,9387.93,Active
+714,Credit Card,2020-06-02,0.0,Active
+714,Investment,2020-12-23,32489.05,Active
+714,Savings,2020-01-25,23891.48,Active
+715,Personal Loan,2020-01-16,71599.51,Active
+715,Checking,2020-09-21,56553.29,Active
+716,Credit Card,2020-05-01,0.0,Active
+717,Savings,2020-03-20,26403.56,Active
+718,Savings,2020-10-13,2091.25,Active
+718,Mortgage,2020-08-19,22432.19,Active
+718,Credit Card,2020-09-17,0.0,Active
+719,Mortgage,2020-02-05,33202.59,Active
+720,Credit Card,2020-07-28,0.0,Active
+720,Checking,2020-03-18,74210.93,Active
+721,Investment,2020-05-14,35408.63,Active
+721,Savings,2020-12-06,17093.21,Active
+722,Savings,2020-05-11,19467.15,Active
+722,Checking,2020-10-20,9839.79,Active
+722,Personal Loan,2020-05-27,152643.59,Active
+723,Credit Card,2020-07-07,0.0,Active
+723,Personal Loan,2020-06-06,25231.69,Active
+723,Investment,2020-04-07,14238.96,Active
+724,Credit Card,2020-03-11,0.0,Active
+725,Investment,2020-04-25,62825.53,Active
+726,Personal Loan,2020-04-26,13918.42,Active
+726,Checking,2020-11-26,39407.97,Active
+727,Checking,2020-04-24,258734.3,Active
+728,Mortgage,2020-06-25,19753.65,Active
+728,Investment,2020-02-04,10340.87,Active
+729,Checking,2020-09-14,9543.53,Active
+729,Investment,2020-12-06,63856.01,Active
+729,Savings,2020-02-05,28900.1,Active
+730,Mortgage,2020-03-27,7068.19,Active
+731,Savings,2020-08-22,6157.27,Active
+731,Investment,2020-11-26,6119.36,Active
+731,Mortgage,2020-08-11,9877.65,Active
+732,Checking,2020-12-13,71664.27,Active
+733,Mortgage,2020-05-06,15854.44,Active
+733,Personal Loan,2020-03-15,28195.17,Active
+734,Personal Loan,2020-01-22,7149.53,Active
+734,Savings,2020-04-05,15577.01,Active
+734,Credit Card,2020-11-29,0.0,Active
+735,Credit Card,2020-04-04,0.0,Active
+735,Checking,2020-10-22,45547.27,Active
+736,Investment,2020-11-21,67571.16,Active
+736,Personal Loan,2020-09-21,105834.16,Active
+736,Mortgage,2020-09-27,65597.9,Active
+737,Savings,2020-07-29,20782.42,Active
+737,Checking,2020-11-08,28682.11,Active
+737,Mortgage,2020-05-06,7724.79,Active
+738,Investment,2020-03-02,7178.65,Active
+738,Savings,2020-05-27,87565.2,Active
+738,Mortgage,2020-07-04,27643.17,Active
+739,Savings,2020-01-29,24022.13,Active
+739,Mortgage,2020-12-17,12792.46,Active
+739,Personal Loan,2020-12-06,27184.57,Active
+740,Personal Loan,2020-04-06,108231.19,Active
+741,Savings,2020-06-20,12237.52,Active
+741,Credit Card,2020-08-23,0.0,Active
+742,Mortgage,2020-04-29,20738.53,Active
+742,Savings,2020-12-29,43737.67,Active
+742,Investment,2020-06-13,5393.51,Active
+743,Personal Loan,2020-07-28,3999.55,Active
+744,Mortgage,2020-01-05,9547.96,Active
+744,Credit Card,2020-03-11,0.0,Active
+744,Savings,2020-12-13,16773.22,Active
+745,Savings,2020-06-01,17362.05,Active
+745,Mortgage,2020-08-06,13366.27,Active
+746,Savings,2020-08-05,89523.93,Active
+747,Personal Loan,2020-11-28,16857.21,Active
+747,Checking,2020-07-25,96579.45,Active
+748,Investment,2020-01-19,5002.05,Active
+748,Checking,2020-01-23,33600.35,Active
+748,Credit Card,2020-12-26,0.0,Active
+749,Savings,2020-04-19,25255.25,Active
+750,Savings,2020-01-06,28156.51,Active
+751,Savings,2020-11-25,20396.25,Active
+751,Checking,2020-12-18,1388.93,Active
+751,Mortgage,2020-10-15,111196.48,Active
+752,Credit Card,2020-11-08,0.0,Active
+752,Checking,2020-12-17,92490.05,Active
+752,Personal Loan,2020-01-21,6048.86,Active
+753,Mortgage,2020-03-16,70069.62,Active
+753,Credit Card,2020-12-07,0.0,Active
+753,Savings,2020-10-16,18555.18,Active
+754,Savings,2020-07-09,13426.82,Active
+754,Personal Loan,2020-03-30,9139.5,Active
+754,Mortgage,2020-11-07,74769.82,Active
+755,Credit Card,2020-02-24,0.0,Active
+755,Investment,2020-10-31,12349.22,Active
+756,Investment,2020-04-14,23464.22,Active
+756,Personal Loan,2020-06-20,16716.64,Active
+757,Personal Loan,2020-08-29,77357.86,Active
+757,Savings,2020-06-24,72237.41,Active
+757,Investment,2020-12-08,56253.01,Active
+758,Mortgage,2020-09-27,13483.31,Active
+758,Checking,2020-03-05,26691.87,Active
+759,Mortgage,2020-09-23,24207.24,Active
+759,Credit Card,2020-04-27,0.0,Active
+760,Mortgage,2020-09-02,4701.34,Active
+761,Mortgage,2020-05-01,7776.74,Active
+761,Savings,2020-04-17,12897.02,Active
+761,Credit Card,2020-07-16,0.0,Active
+762,Personal Loan,2020-01-24,18367.36,Active
+762,Checking,2020-06-23,234602.22,Active
+762,Savings,2020-09-17,28089.46,Active
+763,Mortgage,2020-07-16,10865.32,Active
+763,Credit Card,2020-01-16,0.0,Active
+764,Savings,2020-07-10,45233.78,Active
+764,Credit Card,2020-05-30,0.0,Active
+765,Personal Loan,2020-08-10,12408.31,Active
+766,Savings,2020-06-21,4078.17,Active
+766,Personal Loan,2020-07-18,88618.44,Active
+767,Checking,2020-11-02,16621.82,Active
+768,Savings,2020-09-18,35006.94,Active
+768,Personal Loan,2020-01-28,15787.16,Active
+768,Mortgage,2020-07-29,7066.43,Active
+769,Mortgage,2020-02-15,44541.77,Active
+769,Checking,2020-06-14,125239.73,Active
+770,Credit Card,2020-09-05,0.0,Active
+771,Checking,2020-11-10,33825.42,Active
+772,Checking,2020-03-18,52219.57,Active
+772,Savings,2020-02-08,29998.07,Active
+772,Investment,2020-08-26,48269.1,Active
+773,Checking,2020-07-25,47703.2,Active
+773,Mortgage,2020-01-07,9964.99,Active
+773,Personal Loan,2020-11-02,52720.49,Active
+774,Savings,2020-12-03,25019.94,Active
+774,Credit Card,2020-05-29,0.0,Active
+775,Personal Loan,2020-12-03,13204.98,Active
+776,Checking,2020-02-23,15780.38,Active
+776,Credit Card,2020-02-01,0.0,Active
+776,Mortgage,2020-12-21,5323.66,Active
+777,Savings,2020-03-29,15270.2,Active
+777,Investment,2020-01-08,26285.22,Active
+778,Mortgage,2020-02-04,8196.57,Active
+778,Personal Loan,2020-02-22,207093.69,Active
+778,Savings,2020-12-12,25124.35,Active
+779,Credit Card,2020-02-03,0.0,Active
+779,Checking,2020-08-30,39015.17,Active
+780,Mortgage,2020-10-28,12782.21,Active
+780,Investment,2020-04-21,46448.24,Active
+780,Checking,2020-11-12,22892.09,Active
+781,Mortgage,2020-06-03,2608.75,Active
+781,Savings,2020-09-28,6884.73,Active
+782,Checking,2020-10-09,15407.12,Active
+782,Savings,2020-07-13,72000.96,Active
+783,Credit Card,2020-09-16,0.0,Active
+784,Checking,2020-04-12,17771.27,Active
+784,Savings,2020-04-20,18870.26,Active
+784,Investment,2020-08-21,20741.03,Active
+785,Personal Loan,2020-04-08,12546.58,Active
+785,Savings,2020-04-26,109592.91,Active
+786,Savings,2020-10-24,7503.63,Active
+787,Mortgage,2020-07-12,18138.72,Active
+788,Investment,2020-03-23,9211.6,Active
+788,Personal Loan,2020-11-12,81143.49,Active
+789,Personal Loan,2020-04-04,21479.86,Active
+790,Savings,2020-04-18,27573.22,Active
+790,Investment,2020-02-09,18855.83,Active
+790,Personal Loan,2020-01-18,6934.7,Active
+791,Checking,2020-07-04,31000.35,Active
+792,Personal Loan,2020-11-19,6012.97,Active
+792,Credit Card,2020-08-17,0.0,Active
+792,Investment,2020-01-24,37433.31,Active
+793,Investment,2020-09-24,58428.38,Active
+794,Personal Loan,2020-02-28,78537.65,Active
+795,Personal Loan,2020-08-16,24722.11,Active
+795,Checking,2020-07-08,35924.63,Active
+795,Credit Card,2020-08-02,0.0,Active
+796,Credit Card,2020-11-30,0.0,Active
+797,Credit Card,2020-08-06,0.0,Active
+797,Investment,2020-12-07,6769.78,Active
+797,Savings,2020-02-03,24739.79,Active
+798,Checking,2020-10-11,32905.05,Active
+798,Personal Loan,2020-11-25,16822.83,Active
+798,Credit Card,2020-04-10,0.0,Active
+799,Savings,2020-08-13,23603.49,Active
+799,Credit Card,2020-03-17,0.0,Active
+800,Investment,2020-05-16,30187.05,Active
+800,Checking,2020-04-26,18746.83,Active
+800,Personal Loan,2020-11-28,7852.01,Active
+801,Personal Loan,2020-11-30,42974.15,Active
+801,Investment,2020-11-11,8985.92,Active
+801,Savings,2020-12-30,39083.18,Active
+802,Checking,2020-10-18,65271.37,Active
+803,Savings,2020-08-09,2725.62,Active
+803,Personal Loan,2020-06-21,23841.48,Active
+803,Investment,2020-06-05,25782.27,Active
+804,Mortgage,2020-08-20,11481.27,Active
+804,Investment,2020-06-09,23590.48,Active
+804,Credit Card,2020-03-18,0.0,Active
+805,Mortgage,2020-05-22,38405.22,Active
+805,Checking,2020-02-01,2888.37,Active
+806,Mortgage,2020-10-05,24519.63,Active
+806,Credit Card,2020-06-14,0.0,Active
+807,Savings,2020-11-18,13361.45,Active
+807,Personal Loan,2020-03-11,33977.55,Active
+807,Checking,2020-04-22,10474.81,Active
+808,Savings,2020-11-01,101964.54,Active
+808,Checking,2020-08-19,33541.43,Active
+809,Investment,2020-03-10,63714.5,Active
+809,Credit Card,2020-09-16,0.0,Active
+809,Checking,2020-04-17,15938.38,Active
+810,Personal Loan,2020-07-04,1334.33,Active
+810,Investment,2020-07-26,7606.65,Active
+811,Personal Loan,2020-04-12,38985.52,Active
+812,Personal Loan,2020-05-06,9755.6,Active
+813,Checking,2020-08-08,18158.93,Active
+814,Mortgage,2020-09-27,62964.07,Active
+814,Personal Loan,2020-02-16,9661.14,Active
+814,Savings,2020-07-17,56173.8,Active
+815,Investment,2020-09-06,42558.38,Active
+816,Savings,2020-03-30,27783.41,Active
+816,Investment,2020-06-15,53613.36,Active
+817,Savings,2020-06-05,86780.83,Active
+817,Checking,2020-11-04,16482.97,Active
+817,Credit Card,2020-03-09,0.0,Active
+818,Credit Card,2020-11-21,0.0,Active
+818,Mortgage,2020-07-01,44684.35,Active
+818,Investment,2020-01-16,14986.49,Active
+819,Personal Loan,2020-07-15,10038.27,Active
+819,Mortgage,2020-08-30,49347.54,Active
+819,Investment,2020-07-08,17528.23,Active
+820,Investment,2020-02-09,34853.12,Active
+821,Savings,2020-12-18,81792.65,Active
+821,Mortgage,2020-06-12,197952.66,Active
+822,Mortgage,2020-10-20,5942.57,Active
+822,Personal Loan,2020-02-14,22450.47,Active
+823,Investment,2020-03-14,82812.1,Active
+823,Savings,2020-09-08,8220.19,Active
+823,Mortgage,2020-12-04,9411.91,Active
+824,Credit Card,2020-10-11,0.0,Active
+824,Personal Loan,2020-08-10,18635.11,Active
+825,Investment,2020-09-07,6263.89,Active
+826,Personal Loan,2020-02-20,27897.99,Active
+826,Credit Card,2020-05-10,0.0,Active
+827,Checking,2020-09-13,24405.62,Active
+828,Personal Loan,2020-07-05,42862.82,Active
+829,Credit Card,2020-01-09,0.0,Active
+830,Checking,2020-12-23,215755.89,Active
+830,Personal Loan,2020-06-20,9009.83,Active
+831,Credit Card,2020-05-31,0.0,Active
+831,Checking,2020-10-08,72943.57,Active
+832,Checking,2020-10-09,8272.96,Active
+833,Mortgage,2020-04-06,21781.6,Active
+833,Credit Card,2020-04-07,0.0,Active
+833,Investment,2020-10-16,9832.81,Active
+834,Mortgage,2020-04-26,117853.84,Active
+835,Savings,2020-07-07,36163.58,Active
+836,Investment,2020-06-29,13740.21,Active
+836,Mortgage,2020-07-31,1549.73,Active
+836,Credit Card,2020-09-16,0.0,Active
+837,Credit Card,2020-11-28,0.0,Active
+838,Checking,2020-12-04,6013.94,Active
+838,Investment,2020-09-13,30926.33,Active
+839,Checking,2020-07-19,40535.88,Active
+840,Investment,2020-09-02,28491.38,Active
+841,Mortgage,2020-06-03,27476.58,Active
+841,Investment,2020-12-02,92338.18,Active
+841,Checking,2020-10-24,23594.33,Active
+842,Savings,2020-09-10,25084.32,Active
+842,Personal Loan,2020-08-01,7608.06,Active
+843,Credit Card,2020-04-01,0.0,Active
+843,Checking,2020-04-17,50521.86,Active
+843,Mortgage,2020-10-15,31979.24,Active
+844,Checking,2020-12-21,64739.41,Active
+844,Credit Card,2020-01-11,0.0,Active
+845,Investment,2020-08-07,20206.97,Active
+845,Credit Card,2020-12-15,0.0,Active
+846,Credit Card,2020-01-29,0.0,Active
+846,Savings,2020-10-01,36310.69,Active
+846,Checking,2020-03-10,10017.41,Active
+847,Savings,2020-07-23,5189.96,Active
+847,Checking,2020-04-09,31631.67,Active
+847,Credit Card,2020-11-12,0.0,Active
+848,Checking,2020-03-25,16088.82,Active
+848,Savings,2020-08-25,28572.07,Active
+849,Savings,2020-04-15,39839.09,Active
+849,Credit Card,2020-07-15,0.0,Active
+849,Mortgage,2020-11-16,32311.03,Active
+850,Mortgage,2020-05-24,30664.69,Active
+850,Credit Card,2020-06-24,0.0,Active
+851,Savings,2020-04-30,46619.15,Active
+851,Checking,2020-11-14,18390.66,Active
+851,Investment,2020-10-14,39405.87,Active
+852,Investment,2020-01-24,2536.89,Active
+853,Checking,2020-02-01,35686.71,Active
+853,Credit Card,2020-05-20,0.0,Active
+854,Checking,2020-04-07,63634.76,Active
+855,Mortgage,2020-08-23,59157.71,Active
+855,Credit Card,2020-12-18,0.0,Active
+855,Personal Loan,2020-05-07,58407.56,Active
+856,Credit Card,2020-05-14,0.0,Active
+856,Checking,2020-02-15,31865.01,Active
+857,Credit Card,2020-04-15,0.0,Active
+857,Checking,2020-10-16,4092.68,Active
+857,Mortgage,2020-07-10,67440.45,Active
+858,Checking,2020-01-04,80476.16,Active
+859,Investment,2020-06-20,28211.1,Active
+859,Personal Loan,2020-08-21,61522.06,Active
+859,Mortgage,2020-03-16,49432.31,Active
+860,Checking,2020-08-16,30878.82,Active
+860,Credit Card,2020-03-27,0.0,Active
+861,Credit Card,2020-02-18,0.0,Active
+862,Investment,2020-01-07,31505.82,Active
+862,Personal Loan,2020-09-25,6647.81,Active
+863,Savings,2020-10-08,14377.63,Active
+863,Mortgage,2020-11-27,15371.97,Active
+864,Checking,2020-07-05,13192.71,Active
+865,Credit Card,2020-10-30,0.0,Active
+866,Investment,2020-03-08,11796.36,Active
+867,Personal Loan,2020-06-03,17004.27,Active
+868,Investment,2020-12-16,143867.99,Active
+868,Checking,2020-02-22,6431.92,Active
+868,Personal Loan,2020-11-25,48790.49,Active
+869,Checking,2020-12-29,7137.87,Active
+869,Personal Loan,2020-07-16,38744.11,Active
+869,Investment,2020-03-12,63688.14,Active
+870,Investment,2020-03-01,4511.74,Active
+870,Savings,2020-01-07,41399.19,Active
+870,Checking,2020-07-06,32173.03,Active
+871,Checking,2020-07-11,18649.12,Active
+872,Personal Loan,2020-08-26,23353.44,Active
+872,Investment,2020-04-04,55002.36,Active
+872,Savings,2020-03-17,20006.0,Active
+873,Investment,2020-08-22,28536.25,Active
+873,Credit Card,2020-09-12,0.0,Active
+873,Savings,2020-04-16,74343.09,Active
+874,Savings,2020-09-15,8001.83,Active
+874,Checking,2020-01-14,33268.16,Active
+874,Credit Card,2020-12-07,0.0,Active
+875,Credit Card,2020-01-15,0.0,Active
+875,Mortgage,2020-02-06,106529.0,Active
+875,Investment,2020-06-03,20560.74,Active
+876,Savings,2020-02-08,18963.86,Active
+876,Mortgage,2020-12-17,96485.3,Active
+876,Investment,2020-12-02,44669.24,Active
+877,Investment,2020-10-22,71428.26,Active
+877,Mortgage,2020-05-17,5816.72,Active
+877,Credit Card,2020-10-28,0.0,Active
+878,Investment,2020-10-08,23083.79,Active
+878,Checking,2020-03-13,16283.35,Active
+878,Savings,2020-04-24,19515.79,Active
+879,Credit Card,2020-12-07,0.0,Active
+879,Investment,2020-04-24,45577.58,Active
+879,Mortgage,2020-06-15,19816.73,Active
+880,Mortgage,2020-07-27,36527.12,Active
+880,Credit Card,2020-09-29,0.0,Active
+881,Credit Card,2020-04-01,0.0,Active
+881,Savings,2020-06-09,162401.37,Active
+881,Investment,2020-10-28,71612.92,Active
+882,Investment,2020-02-04,6708.02,Active
+883,Personal Loan,2020-12-17,34260.92,Active
+884,Credit Card,2020-05-15,0.0,Active
+885,Personal Loan,2020-12-06,39974.01,Active
+885,Savings,2020-06-26,30091.88,Active
+886,Savings,2020-05-02,15199.35,Active
+887,Investment,2020-04-08,44336.31,Active
+888,Mortgage,2020-02-25,37668.89,Active
+888,Checking,2020-07-03,73500.64,Active
+889,Mortgage,2020-05-02,38996.38,Active
+889,Investment,2020-11-16,88489.89,Active
+890,Mortgage,2020-05-19,8213.71,Active
+890,Personal Loan,2020-05-10,36931.69,Active
+891,Credit Card,2020-01-17,0.0,Active
+892,Checking,2020-09-19,11316.86,Active
+893,Savings,2020-10-15,7497.48,Active
+893,Credit Card,2020-05-10,0.0,Active
+894,Credit Card,2020-07-26,0.0,Active
+894,Checking,2020-09-02,30789.5,Active
+895,Mortgage,2020-08-05,107815.2,Active
+895,Investment,2020-02-24,8326.28,Active
+896,Investment,2020-02-18,21214.42,Active
+897,Checking,2020-04-28,1336.87,Active
+897,Mortgage,2020-11-22,34005.03,Active
+897,Personal Loan,2020-07-03,4056.35,Active
+898,Credit Card,2020-08-22,0.0,Active
+898,Checking,2020-05-15,48811.17,Active
+899,Credit Card,2020-03-21,0.0,Active
+900,Personal Loan,2020-11-02,39647.3,Active
+900,Mortgage,2020-01-03,5740.55,Active
+900,Credit Card,2020-11-02,0.0,Active
+901,Mortgage,2020-05-01,11380.66,Active
+901,Credit Card,2020-02-07,0.0,Active
+901,Investment,2020-07-08,29804.99,Active
+902,Mortgage,2020-03-07,11572.84,Active
+902,Credit Card,2020-11-11,0.0,Active
+902,Investment,2020-10-22,2296.1,Active
+903,Checking,2020-04-24,17732.83,Active
+904,Savings,2020-10-20,16436.21,Active
+905,Credit Card,2020-01-16,0.0,Active
+906,Checking,2020-11-07,67739.67,Active
+906,Credit Card,2020-04-12,0.0,Active
+907,Personal Loan,2020-06-30,43347.06,Active
+908,Checking,2020-03-14,110942.36,Active
+908,Credit Card,2020-04-02,0.0,Active
+909,Personal Loan,2020-10-31,14398.87,Active
+910,Mortgage,2020-04-04,8082.48,Active
+910,Credit Card,2020-09-04,0.0,Active
+911,Investment,2020-02-20,74569.96,Active
+911,Checking,2020-05-22,51066.52,Active
+912,Savings,2020-07-03,82411.39,Active
+912,Credit Card,2020-06-06,0.0,Active
+912,Checking,2020-09-02,52629.67,Active
+913,Mortgage,2020-03-07,16811.53,Active
+913,Credit Card,2020-08-05,0.0,Active
+914,Mortgage,2020-11-27,38670.8,Active
+914,Personal Loan,2020-10-30,18989.72,Active
+914,Investment,2020-01-15,16777.1,Active
+915,Personal Loan,2020-11-19,3548.72,Active
+915,Checking,2020-09-17,47794.06,Active
+916,Checking,2020-03-07,97381.94,Active
+916,Savings,2020-01-23,20637.43,Active
+917,Savings,2020-03-12,34486.3,Active
+917,Mortgage,2020-03-08,38448.25,Active
+917,Credit Card,2020-12-08,0.0,Active
+918,Checking,2020-02-21,4368.92,Active
+918,Mortgage,2020-06-23,10398.05,Active
+919,Personal Loan,2020-01-24,16324.96,Active
+919,Mortgage,2020-11-20,9549.35,Active
+919,Savings,2020-12-22,30658.47,Active
+920,Personal Loan,2020-04-06,28540.4,Active
+921,Savings,2020-05-17,4868.99,Active
+921,Personal Loan,2020-04-14,98566.02,Active
+922,Checking,2020-07-18,19531.88,Active
+922,Personal Loan,2020-09-08,29202.42,Active
+922,Credit Card,2020-04-14,0.0,Active
+923,Checking,2020-12-06,16377.97,Active
+924,Personal Loan,2020-12-18,15312.31,Active
+925,Credit Card,2020-05-08,0.0,Active
+925,Investment,2020-11-16,27468.66,Active
+925,Savings,2020-01-28,31601.63,Active
+926,Personal Loan,2020-03-14,46714.41,Active
+927,Checking,2020-09-26,46986.28,Active
+928,Personal Loan,2020-09-08,9528.73,Active
+928,Investment,2020-08-30,128856.62,Active
+928,Mortgage,2020-02-08,45670.2,Active
+929,Savings,2020-02-05,4900.52,Active
+930,Mortgage,2020-05-25,4318.51,Active
+931,Checking,2020-01-24,158561.62,Active
+932,Personal Loan,2020-05-05,15135.24,Active
+933,Credit Card,2020-08-04,0.0,Active
+933,Personal Loan,2020-08-27,5533.2,Active
+933,Savings,2020-08-19,5087.25,Active
+934,Savings,2020-10-05,31465.44,Active
+934,Credit Card,2020-10-23,0.0,Active
+935,Checking,2020-06-26,7615.27,Active
+935,Personal Loan,2020-01-20,29590.11,Active
+936,Savings,2020-06-12,32691.86,Active
+936,Personal Loan,2020-04-06,1834.15,Active
+937,Mortgage,2020-12-07,7789.22,Active
+937,Checking,2020-04-27,156615.5,Active
+937,Personal Loan,2020-01-01,5401.12,Active
+938,Checking,2020-12-15,6849.38,Active
+938,Savings,2020-09-30,60698.06,Active
+938,Credit Card,2020-02-10,0.0,Active
+939,Checking,2020-05-22,20551.77,Active
+939,Credit Card,2020-07-25,0.0,Active
+939,Investment,2020-08-18,11157.1,Active
+940,Savings,2020-02-24,76223.63,Active
+940,Investment,2020-09-09,22578.81,Active
+941,Savings,2020-08-13,104412.47,Active
+942,Checking,2020-09-14,28190.22,Active
+942,Personal Loan,2020-01-16,14713.23,Active
+942,Savings,2020-06-06,50113.31,Active
+943,Checking,2020-05-18,6758.27,Active
+944,Credit Card,2020-04-20,0.0,Active
+944,Personal Loan,2020-11-29,1819.89,Active
+945,Checking,2020-06-20,6639.52,Active
+945,Savings,2020-07-14,34464.89,Active
+945,Personal Loan,2020-02-10,46035.73,Active
+946,Checking,2020-12-25,3337.62,Active
+946,Credit Card,2020-06-21,0.0,Active
+947,Checking,2020-05-12,100332.98,Active
+947,Investment,2020-09-18,89850.96,Active
+947,Credit Card,2020-12-15,0.0,Active
+948,Checking,2020-05-20,56086.74,Active
+948,Credit Card,2020-11-23,0.0,Active
+949,Mortgage,2020-01-26,31886.1,Active
+950,Personal Loan,2020-01-11,60413.49,Active
+950,Investment,2020-02-07,9771.48,Active
+951,Personal Loan,2020-11-03,16411.42,Active
+952,Mortgage,2020-03-12,38090.28,Active
+953,Checking,2020-06-03,9189.83,Active
+953,Mortgage,2020-06-27,25728.83,Active
+953,Personal Loan,2020-08-27,25952.31,Active
+954,Investment,2020-01-14,28719.13,Active
+954,Checking,2020-04-29,168395.22,Active
+955,Investment,2020-06-02,33234.94,Active
+956,Mortgage,2020-02-17,42811.86,Active
+956,Investment,2020-02-02,40396.49,Active
+957,Personal Loan,2020-11-02,52459.96,Active
+957,Savings,2020-05-21,27650.67,Active
+957,Checking,2020-10-04,16018.8,Active
+958,Credit Card,2020-09-02,0.0,Active
+958,Investment,2020-01-21,37821.41,Active
+959,Personal Loan,2020-09-21,7550.23,Active
+959,Credit Card,2020-03-13,0.0,Active
+959,Checking,2020-05-29,10053.53,Active
+960,Credit Card,2020-03-12,0.0,Active
+961,Savings,2020-10-19,44441.89,Active
+961,Checking,2020-08-08,8951.19,Active
+962,Mortgage,2020-09-14,10501.99,Active
+962,Credit Card,2020-01-14,0.0,Active
+962,Checking,2020-04-22,13459.73,Active
+963,Credit Card,2020-11-15,0.0,Active
+964,Checking,2020-11-03,8258.95,Active
+964,Personal Loan,2020-06-27,10190.25,Active
+965,Mortgage,2020-06-15,72708.57,Active
+966,Investment,2020-01-29,80910.76,Active
+967,Personal Loan,2020-12-22,32434.77,Active
+967,Mortgage,2020-02-04,53089.57,Active
+968,Mortgage,2020-11-12,18610.81,Active
+968,Credit Card,2020-05-13,0.0,Active
+969,Personal Loan,2020-06-03,7701.35,Active
+969,Investment,2020-04-19,44163.46,Active
+969,Credit Card,2020-08-07,0.0,Active
+970,Credit Card,2020-08-15,0.0,Active
+970,Checking,2020-03-13,8786.65,Active
+971,Savings,2020-10-01,4005.32,Active
+971,Credit Card,2020-05-15,0.0,Active
+971,Checking,2020-03-14,20269.38,Active
+972,Savings,2020-01-03,17952.78,Active
+972,Mortgage,2020-10-28,90495.99,Active
+973,Investment,2020-12-27,22896.99,Active
+973,Savings,2020-12-11,11091.66,Active
+974,Checking,2020-01-31,28619.99,Active
+975,Savings,2020-04-14,75672.48,Active
+975,Checking,2020-10-01,24795.05,Active
+976,Checking,2020-12-09,45588.82,Active
+976,Mortgage,2020-09-19,14978.46,Active
+976,Personal Loan,2020-02-27,310781.7,Active
+977,Credit Card,2020-11-30,0.0,Active
+978,Checking,2020-11-20,59151.76,Active
+978,Investment,2020-11-03,34863.8,Active
+978,Credit Card,2020-05-21,0.0,Active
+979,Personal Loan,2020-06-13,139897.19,Active
+979,Credit Card,2020-05-03,0.0,Active
+980,Checking,2020-05-06,5957.21,Active
+980,Investment,2020-08-13,30592.0,Active
+980,Credit Card,2020-01-03,0.0,Active
+981,Mortgage,2020-09-02,75003.52,Active
+982,Savings,2020-10-29,20986.56,Active
+982,Credit Card,2020-01-17,0.0,Active
+983,Savings,2020-10-16,17837.9,Active
+983,Mortgage,2020-09-18,17689.43,Active
+983,Checking,2020-05-08,273626.36,Active
+984,Savings,2020-12-10,8171.45,Active
+985,Credit Card,2020-09-07,0.0,Active
+985,Savings,2020-08-03,1672.49,Active
+986,Savings,2020-04-26,44320.94,Active
+987,Checking,2020-10-18,4413.21,Active
+987,Credit Card,2020-09-17,0.0,Active
+987,Personal Loan,2020-07-25,6526.64,Active
+988,Mortgage,2020-06-20,13323.85,Active
+988,Credit Card,2020-07-04,0.0,Active
+989,Savings,2020-05-30,6980.7,Active
+989,Investment,2020-03-07,146354.07,Active
+990,Investment,2020-02-29,4423.22,Active
+990,Savings,2020-03-13,25378.4,Active
+990,Mortgage,2020-07-14,18639.55,Active
+991,Checking,2020-09-30,6880.32,Active
+992,Personal Loan,2020-04-22,2806.8,Active
+992,Checking,2020-12-23,31005.55,Active
+993,Mortgage,2020-03-01,22586.65,Active
+993,Checking,2020-04-24,39137.73,Active
+993,Investment,2020-02-09,16266.26,Active
+994,Checking,2020-01-27,64217.93,Active
+995,Mortgage,2020-10-26,297025.87,Active
+996,Savings,2020-08-04,81610.14,Active
+997,Credit Card,2020-05-06,0.0,Active
+997,Personal Loan,2020-07-20,25644.06,Active
+997,Investment,2020-11-13,17081.49,Active
+998,Mortgage,2020-11-06,19721.01,Active
+998,Investment,2020-05-02,137520.55,Active
+998,Checking,2020-08-31,64685.59,Active
+999,Investment,2020-12-08,21636.52,Active
+999,Credit Card,2020-07-24,0.0,Active
+999,Personal Loan,2020-07-20,94348.39,Active
