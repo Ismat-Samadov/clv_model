@@ -93,71 +93,38 @@ class BankingCLVModel:
 
     def predict(self, customers_df, transactions_df, products_df, metrics_df):
         """
-        Make CLV predictions with business logic and value bounds
+        Make CLV predictions using the trained model
         """
         try:
-            print(f"Input data shapes:")
-            print(f"Customers: {customers_df.shape}")
-            print(f"Transactions: {transactions_df.shape}")
-            print(f"Products: {products_df.shape}")
-            print(f"Metrics: {metrics_df.shape}")
+            # Prepare features using the same preprocessing as during training
+            features_df = self.prepare_features(customers_df, transactions_df, products_df, metrics_df)
             
-            # Get customer details for calculations
-            annual_income = float(customers_df['income'].iloc[0])
-            credit_score = float(customers_df['credit_score'].iloc[0])
-            tenure_months = float(customers_df['tenure_months'].iloc[0])
+            # Remove customer_id before scaling
+            customer_ids = features_df['customer_id']
+            X = features_df.drop('customer_id', axis=1)
             
-            # Calculate transaction-based metrics
-            total_transaction_amount = transactions_df['amount'].sum()
-            avg_transaction_amount = transactions_df['amount'].mean() if len(transactions_df) > 0 else 0
-            transaction_count = len(transactions_df)
+            # Ensure columns match training data
+            if self.feature_names:
+                missing_cols = set(self.feature_names) - set(X.columns)
+                for col in missing_cols:
+                    X[col] = 0
+                X = X[self.feature_names]
             
-            # Calculate product-based metrics
-            total_balance = products_df['balance'].sum()
-            product_count = len(products_df)
+            # Scale features
+            X_scaled = self.scaler.transform(X)
             
-            # Calculate monthly metrics
-            monthly_spend = total_transaction_amount / max(tenure_months, 1)
-            yearly_spend = monthly_spend * 12
-            
-            # Calculate base CLV (5-year projection)
-            base_clv = yearly_spend * 5
-            
-            # Apply adjustments
-            # 1. Credit score adjustment
-            credit_multiplier = (credit_score / 700) ** 0.5
-            
-            # 2. Product portfolio adjustment
-            product_multiplier = 1 + (0.1 * product_count)
-            
-            # 3. Transaction frequency adjustment
-            transaction_multiplier = 1 + (0.05 * min(transaction_count, 20))
-            
-            # Calculate final CLV
-            predicted_clv = base_clv * credit_multiplier * product_multiplier * transaction_multiplier
-            
-            # Apply income-based bounds
-            min_clv = annual_income * 0.05  # Minimum 5% of annual income
-            max_clv = annual_income * 5     # Maximum 500% of annual income
-            predicted_clv = np.clip(predicted_clv, min_clv, max_clv)
-            
-            print(f"Prediction details:")
-            print(f"Base CLV: ${base_clv:,.2f}")
-            print(f"Credit multiplier: {credit_multiplier:.2f}")
-            print(f"Product multiplier: {product_multiplier:.2f}")
-            print(f"Transaction multiplier: {transaction_multiplier:.2f}")
-            print(f"Final predicted CLV: ${predicted_clv:,.2f}")
+            # Make prediction using the trained model
+            predictions = self.model.predict(X_scaled)
             
             return pd.DataFrame({
-                'customer_id': [customers_df['customer_id'].iloc[0]],
-                'predicted_clv': [float(predicted_clv)]
+                'customer_id': customer_ids,
+                'predicted_clv': predictions
             })
             
         except Exception as e:
             print(f"Error in prediction: {str(e)}")
             raise
         
-    
     @classmethod
     def load_model(cls, model_path):
         """
